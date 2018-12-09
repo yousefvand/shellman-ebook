@@ -32,7 +32,5 @@ Sample code:
 More text...
 
 {lang="bash"}
-~~~~~~~~
 {crop-start-line=5,crop-end-line=12}
 <<[Banner](code/fn.sh)
-~~~~~~~~
