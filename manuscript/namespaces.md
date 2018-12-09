@@ -1,0 +1,5 @@
+{mainmatter}
+
+# Namespaces
+
+Some text...

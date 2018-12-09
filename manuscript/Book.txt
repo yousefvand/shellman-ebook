@@ -1,2 +1,4 @@
 preface.md
+namespaces.md
 chapter1.md
+appendix.md
