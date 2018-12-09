@@ -31,5 +31,5 @@ Sample code:
 
 More text...
 
-{crop-start-line=5,crop-end-line=12}
+{crop-start-line=5,crop-end-line=12,starting-line-number=5}
 <<[Banner](code/fn.sh)
