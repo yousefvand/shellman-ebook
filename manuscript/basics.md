@@ -21,11 +21,13 @@ This is the first line of any bash script. You may see different versions of it:
 
 This line tells the *operating system* which script engine should be used to run the script. Usually you don't need to change the default value **Shellman** provides:
 
-`#!/usr/bin/env bash`
+```bash
+#!/usr/bin/env bash
+```
 
 ## Run a Bash Script
 
-Bash script files by convention has **.sh** *extension*. To run a bash script (test.sh for example) you have two options:
+Bash script files by convention has **.sh** *extension*. To run a bash script (test.sh for example) from terminal you have two options:
 
 - Run it with bash command:
   1. `bash test.sh`
@@ -33,6 +35,16 @@ Bash script files by convention has **.sh** *extension*. To run a bash script (t
 - Give it execute permission and run it directly:
   1. `chmod +x test.sh`
   2. `./test.sh`
+
+## Run a Command from Shell Script
+
+To run a command from your script just write it as you do in terminal:
+
+```bash
+#!/usr/bin/env bash
+
+rm some_file
+```
 
 ## Variables
 
@@ -90,14 +102,20 @@ echo "$a $b$c"
 
 The whitespace between `$a` and `$b` is the whitespace between `Hello` and `world` in the output.
 
-## Command substitution
+## Variable Types
+
+The only **type** you have in shell is **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations and return `String` to you.
+
+## Commands
+
+### Command substitution
 
 It is common practice to store the output of commands inside variables for further processing in script. The process is known as *command substitution* and can be done in two syntax:
 
 1. `` output=`command` ``
 2. `output=$(command)`
 
-WE will use method one (using backtick) in the rest of this book.
+We will use method one (backtick) in the rest of this book.
 
 To store results of `ls` command in a variable named `output`:
 
@@ -107,4 +125,122 @@ output=`ls` # store ls results in output variable
 echo "$output" # print output
 ```
 
-There is a more advance technique for using a command output as another command input, namely **piping**, you can read about in **advance** section.
+There is a more advance technique for using a command output as another command input, namely **piping (|)**, you can read about in **advanced** section.
+
+### Command success/failure check
+
+It happens when you are interested to know if a previous command succeeded or failed. In linux every program returns a number to *operating system* at exit time. By convention if the return value be `0` in means no error happened and other values indicates command **failure**.
+
+T> ### Command success/failure
+T>
+T> Programs return `0` in case of **success** and non zero if **failure** happens.
+
+To check that you can check *last command return value* by reading `$?` value. There is a snippet at `func` namespace for retreiving last command return value as `func ret val`:
+
+```bash
+echo "$?"
+```
+
+ **Shellman** supports checking **failure** of last command via `cmd` *namespace* as `cmd failure check` snippet:
+
+```bash
+# following command will fail due to lack of permission
+touch /not_enough_permission_to_create_file
+
+# check last command (touch) success/failure
+if [[ $? != 0 ]]; then
+  echo command failed
+fi
+```
+
+To check **success**, use `cmd success check` snippet from `cmd` namespace:
+
+```bash
+echo "Hello World!"
+
+# check last command (echo) success/failure
+if [[ $? == 0 ]]; then
+  echo command succeed
+fi
+```
+
+## Argument parsing
+
+By convention most linux commands/programs supports a long and short version for the same flag/switch. Short version is usually the first letter of the long version. Some examples:
+
+short | long
+------|--------
+ -v   | --verbose
+ -s   | --silent
+ -f   | --force
+ -o   | --output
+
+You may want to support different *switches*/*flags* by your script and act different based on them. Suppose your script name is `backup.sh`. With supporting flags someone can run it as:
+
+```bash
+./backup.sh -v
+```
+
+So your script works different with `-v`. For example you print verbose information. We need to know if user has run our script with or without `-v` flag. **Shellman** makes it easy for you, keep reading.
+
+If your script supports *switches*, it means user is passing some information to your script via that switch. For example where to save the backup in our example:
+
+```bash
+./backup.sh -o ~/my_backups
+```
+
+In above code we are telling the script to save the output in `~/my_backups` (`~` means home directory for current user).
+
+T> ### Flag vs Switch
+T>
+T> **Flag** is used for boolean values and its presence means **True** while **Switch** accepts an argument.
+
+**Shellman** has a `parse args` snippet. It looks like this:
+
+```bash
+POSITIONAL=()
+while [[ $# > 0 ]]; do
+  case "$1" in
+    -f|--flag)
+    echo flag: $1
+    shift # shift once since flags have no values
+    ;;
+    -s|--switch)
+    echo switch $1 with value: $2
+    shift 2 # shift twice to bypass switch and its value
+    ;;
+    *) # unknown flag/switch
+    POSITIONAL+=("$1")
+    shift
+    ;;
+  esac
+done
+
+set -- "${POSITIONAL[@]}" # restore positional params
+```
+
+This snippet will take care of **Flags** and **Switches** of your script. For implementing your own flag(s) replace `-f|--flag` with desired flag, i.e. `-v|--verbose` and on the next lines (before `shift`) do whatever you need. It is recommended to define a variable and set it here to keep track of the flag:
+
+```bash
+-v|--verbose)
+verbose=true
+```
+
+Repeat above procedure for more flags.
+
+To implement a **switch** like `-o`/`--output`:
+
+```bash
+-o|--output)
+output_path=$2
+```
+
+In above example we are saving the switch value in `output_path` for using later.
+
+Repeat above procedure for more switches.
+
+X> ## Argument Parsing Exercise
+X>
+X> Write a shell script to greet. Script receives the name via `--name` switch to print `good morning name` and if `-n` flag is set print `goodnight name`. `name` is what value passed to script via `--name` flag.
+
+For the answer refer to **Solutions** section.
