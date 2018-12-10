@@ -1,3 +1,5 @@
+{mainmatter}
+
 # Shell Scripting Basics
 
 ## Variables
@@ -43,4 +45,3 @@ echo "$fullName"
 T> ### Handling white space in variables
 T>
 T> Always surround variables in `"` when accessing their values if they may contain white space(s).
-

@@ -1,5 +1,5 @@
 {backmatter}
 
-# Appendix A
+# Solutions
 
 To do...

@@ -1,5 +1,8 @@
 preface.md
-namespaces.md
+prerequisites.md
+structure.md
 basics.md
+namespaces.md
 ns/string.md
-appendix_A.md
+solutions.md
+whys.md
