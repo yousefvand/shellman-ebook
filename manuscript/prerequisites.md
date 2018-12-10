@@ -1,7 +1,5 @@
 # prerequisites
 
-You need to install:
-
 - [vscode](https://code.visualstudio.com) IDE
 
 ![vscode download](images/vscode-download.png)
