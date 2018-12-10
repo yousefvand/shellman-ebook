@@ -10,6 +10,8 @@ This book is a guide for beginners whom want to start shell scripting with **She
 
 Also the business model of **Shellman** is published on [medium](https://medium.com/@remisa.yousefvand/shellman-reborn-f2cc948ce3fc).
 
+This book is a *work in progress*, please consider downloading new versions once a while.
+
 Remisa Yousefvand
 
 December 2018

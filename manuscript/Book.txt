@@ -6,3 +6,4 @@ namespaces.md
 ns/string.md
 solutions.md
 whys.md
+advance.md
