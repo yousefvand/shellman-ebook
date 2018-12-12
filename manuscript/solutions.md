@@ -1,5 +1,9 @@
 {backmatter}
 
-# Solutions
+# Solutions {#solutions}
 
-To do...
+## Argument Parsing
+
+Contents of `greet.sh`:
+
+<<[Argument Parsing](code/greet.sh)

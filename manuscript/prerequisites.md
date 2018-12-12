@@ -1,4 +1,4 @@
-# prerequisites
+# Prerequisites {#prerequisites}
 
 - [vscode](https://code.visualstudio.com) IDE
 

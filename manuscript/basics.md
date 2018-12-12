@@ -1,16 +1,16 @@
 {mainmatter}
 
-# Shell Scripting Basics
+# Shell Scripting Basics {#basics}
 
 ## Comments
 
-In shell scripts anything after `#` is considered a comment. The exception is *shebang* which you see as the first line of scripts.
+In shell scripts anything after `#` in a line is considered a comment. The exception is [shebang](#shebang) which you see as the first line of scripts.
 
 ```bash
 # This is a comment
 ```
 
-## shebang
+## shebang {#shebang}
 
 This is the first line of any bash script. You may see different versions of it:
 
@@ -27,12 +27,12 @@ This line tells the *operating system* which script engine should be used to run
 
 ## Run a Bash Script
 
-Bash script files by convention has **.sh** *extension*. To run a bash script (test.sh for example) from terminal you have two options:
+Bash script files by convention has **.sh** *file extension*[^fn1]. To run a bash script (`test.sh` for example) from terminal you have two options:
 
-- Run it with bash command:
+- Run it with bash command (pass file path to bash):
   1. `bash test.sh`
 
-- Give it execute permission and run it directly:
+- Give it execute permission and run it directly (prefix file name with a `./` without space):
   1. `chmod +x test.sh`
   2. `./test.sh`
 
@@ -45,20 +45,29 @@ To run a command from your script just write it as you do in terminal:
 
 rm some_file
 ```
+If the command need **root**[^fn2] privileges (in *Windows* it is known as *Admin*), prefix the command with **sudo**:
+
+```bash
+#!/usr/bin/env bash
+
+sudo rm some_file
+```
+
+If you need the result of the executed command refer to [command substitution](#command-substitution).
 
 ## Variables
 
-There is a simple difference between when you define a variable and when use its value. In latter case you need to prefix a `$` to variable name.
-
-T> ### Variable Access Rule
-T>
-T> To access a variable value prefix it with `$`
+There is a simple difference between when you define a variable and when use its value. In latter case you need to prefix a `$` to the variable name.
 
 Define a variable named `firstName` and set its value to `Remisa`:
 
 ```bash
 firstName=Remisa
 ```
+
+T> ### Variable Assignment Rule
+T>
+T> Spaces are not allowed over equal sign `=` in variable assignment.
 
 Now if we want to read our variable value and print in on screen with `echo` command we can write:
 
@@ -67,13 +76,13 @@ firstName=Remisa
 echo $firstName
 ```
 
-T> ### Variable Assignment Rule
+T> ### Variable Access Rule
 T>
-T> Spaces are not allowed over equal sign `=` in variable assignment.
+T> To access a variable value prefix it with `$`
 
 Here we face a serious problem which without well understanding it *shell scripting* becomes *hell scripting*.
 
-As you see in assignment rule, *space* has a special meaning in *shell scripting* and we should take care of where a *space* may appear. For example or variable value may contains *space*:
+As you may guessed in assignment rule, *space* has a special meaning in *shell scripting* and we should take care of where a *space* may appear. For example our variable value may contains *space*:
 
 ```bash
 fullName=Remisa Yousefvand
@@ -104,52 +113,54 @@ The whitespace between `$a` and `$b` is the whitespace between `Hello` and `worl
 
 ## Variable Types
 
-The only **type** you have in shell is **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations and return `String` to you.
+The only **type** you have in shell is **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations and return `String` back to you.
 
 ## Commands
 
-### Command substitution
+### Command substitution {#command-substitution}
 
-It is common practice to store the output of commands inside variables for further processing in script. The process is known as *command substitution* and can be done in two syntax:
+It is common practice to store the output of commands inside variables for further processing in script. The process is known as *command substitution* and can be done in two syntaxes:
 
 1. `` output=`command` ``
 2. `output=$(command)`
 
-We will use method one (backtick) in the rest of this book.
+For the sake of brevity and consistency, we will use method one (backtick) in this book.
 
 To store results of `ls` command in a variable named `output`:
 
 ```bash
-output=`ls` # store ls results in output variable
+output=`ls` # store ls results in a variable named output
 
-echo "$output" # print output
+echo "$output" # print output value (ls result)
 ```
 
-There is a more advance technique for using a command output as another command input, namely **piping (|)**, you can read about in **advanced** section.
+There is a more advance technique for using a command output as another command input, namely **piping (|)**, you can read about in [advanced](#advanced) section.
 
 ### Command success/failure check
 
-It happens when you are interested to know if a previous command succeeded or failed. In linux every program returns a number to *operating system* at exit time. By convention if the return value be `0` in means no error happened and other values indicates command **failure**.
+It happens when you are interested to know if a previous command succeeded or failed. In linux every program returns a number to *operating system* on exit[^fn3]. By convention if the return value be `0` in means no error happened and other values indicates command **failure**.
 
 T> ### Command success/failure
 T>
 T> Programs return `0` in case of **success** and non zero if **failure** happens.
 
-To check that you can check *last command return value* by reading `$?` value. There is a snippet at `func` namespace for retreiving last command return value as `func ret val`:
+To check that, you can check *last command return value* by reading `$?` value. There is a snippet at `func` [namespace](#namespaces) for retrieving last command return value as `func ret val`:
 
 ```bash
 echo "$?"
 ```
 
- **Shellman** supports checking **failure** of last command via `cmd` *namespace* as `cmd failure check` snippet:
+ **Shellman** supports checking **failure** of last command via `cmd` [namespace](#namespaces) as `cmd failure check` snippet:
 
 ```bash
 # following command will fail due to lack of permission
 touch /not_enough_permission_to_create_file
 
+`touch` command creates an empty file. Here we are trying to create the empty file `not_enough_permission_to_create_file` at the root of your file system. Without **sudo** this command will fail due to lack of enough permissions.
+
 # check last command (touch) success/failure
 if [[ $? != 0 ]]; then
-  echo command failed
+  echo "command failed"
 fi
 ```
 
@@ -175,7 +186,7 @@ short | long
  -f   | --force
  -o   | --output
 
-You may want to support different *switches*/*flags* by your script and act different based on them. Suppose your script name is `backup.sh`. With supporting flags someone can run it as:
+You may want to support different *switches/flags* by your script and act differently based on them. Suppose your script name is `backup.sh`. With supporting flags someone can run it as:
 
 ```bash
 ./backup.sh -v
@@ -189,7 +200,7 @@ If your script supports *switches*, it means user is passing some information to
 ./backup.sh -o ~/my_backups
 ```
 
-In above code we are telling the script to save the output in `~/my_backups` (`~` means home directory for current user).
+In above code we are telling the script to save the output in `~/my_backups`[^fn4].
 
 T> ### Flag vs Switch
 T>
@@ -213,7 +224,7 @@ while [[ $# > 0 ]]; do
     POSITIONAL+=("$1")
     shift
     ;;
-  esac
+  esac # end of case. "case" word in reverse!
 done
 
 set -- "${POSITIONAL[@]}" # restore positional params
@@ -241,6 +252,73 @@ Repeat above procedure for more switches.
 
 X> ## Argument Parsing Exercise
 X>
-X> Write a shell script to greet. Script receives the name via `--name` switch to print `good morning name` and if `-n` flag is set print `goodnight name`. `name` is what value passed to script via `--name` flag.
+X> Write a shell script to greet. Script receives the name via `--name` or `-n` switch to print `good night name` and if `-m` flag is set print `good morning name`. `name` is what value passed to script via `--name` flag. If `--name` or `-n` is not passed default value would be `everyone`. Example outputs:
 
-For the answer refer to **Solutions** section.
+```bash
+./greet.sh
+# good night everyone
+
+./greet.sh -m
+# good morning everyone
+
+./greet.sh --name Remisa
+# good night Remisa
+
+./greet.sh -n Remisa
+# good night Remisa
+
+./greet.sh -m --name Remisa
+# good morning Remisa
+
+./greet.sh -m -n Remisa
+# good morning Remisa
+```
+
+For the answer refer to [Solutions](#solutions) section.
+
+## Organizing your Bash Script
+
+Using **Shellman** snippets you can well organize your bash script, so it works well and easy to read by other users. Recommended structure of `script.sh` from top to bottom is:
+
+1. shebang (`bash` snippet)
+2. summary
+3. functions region
+4. command parsing
+
+In *summary* you provide some information about `script`.
+
+```bash
+#!/usr/bin/env bash
+
+# Title:         test
+# Description:   a test script
+# Author:        Remisa <remisa.yousefvand@gmail.com>
+# Date:          2018-12-15
+# Version:       1.0.0
+```
+
+Use `region` snippet to define a `functions` region and put all of your functions there. Remember you need to define functions before you can use them so it is a good idea to put them on the top of the script (after summary).
+
+```bash
+#!/usr/bin/env bash
+
+# summary here
+
+# >>>>>>>>>>>>>>>>>>>>>>>> functions >>>>>>>>>>>>>>>>>>>>>>>>
+
+function greet() {
+  echo "Hello $1"
+}
+
+# <<<<<<<<<<<<<<<<<<<<<<<< functions <<<<<<<<<<<<<<<<<<<<<<<<
+
+greet "Shellman" # call the function
+```
+
+[^fn1]: In *Linux* unlike *Windows*, file extensions has no special meaning to *operating system* but still you can use them to remember which file type you are dealing with. **vscode** uses file extensions to recognize file types (`.sh` for *Shellscript*)
+
+[^fn2]: In *Linux/Unix* systems, **root** is the most privileged user.
+
+[^fn3]: If you have ever programmed in `C/C++`, you may noticed a `return 0` as a default behavior, that is the code your program is returning to *OS*, here `0` as success.
+
+[^fn4]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`.
