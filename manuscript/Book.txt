@@ -4,6 +4,7 @@ structure.md
 basics.md
 namespaces.md
 ns/string.md
+ns/math.md
 advanced.md
 solutions.md
 whys.md

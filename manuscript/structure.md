@@ -4,4 +4,4 @@
 
 ![String Namespace](images/ns-string.png)
 
-*Shellman* is structured into `namespaces`, so it is useful to know supported namespaces and their members. There is no order in learning `namespaces` and you can learn them on need, but before that, you need to know a few things about *shell scripting*. I will try my best to keep **Basics** section short and simple so you can move fast to desired `namespaces`.
+*Shellman* is structured into [namespaces](#namespaces), so it is useful to know supported namespaces and their members. There is no order in learning [namespaces](#namespaces) and you can learn them on need, but before that, you need to know a few things about *shell scripting*. I will try my best to keep [Basics](#basics) section short and simple so you can move fast to desired [namespaces](#namespaces).

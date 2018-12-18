@@ -80,7 +80,7 @@ T> ### Variable Access Rule
 T>
 T> To access a variable value prefix it with `$`
 
-Here we face a serious problem which without well understanding it *shell scripting* becomes *hell scripting*.
+Here we face a serious problem which without well understanding it, *shell scripting* becomes *hell scripting*.
 
 As you may guessed in assignment rule, *space* has a special meaning in *shell scripting* and we should take care of where a *space* may appear. For example our variable value may contains *space*:
 
@@ -113,7 +113,7 @@ The whitespace between `$a` and `$b` is the whitespace between `Hello` and `worl
 
 ## Variable Types
 
-The only **type** you have in shell is **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations and return `String` back to you.
+The only **type** you have in shell is **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations, and return `String` back to you.
 
 ## Commands
 
@@ -134,11 +134,11 @@ output=`ls` # store ls results in a variable named output
 echo "$output" # print output value (ls result)
 ```
 
-There is a more advance technique for using a command output as another command input, namely **piping (|)**, you can read about in [advanced](#advanced) section.
+There is a more advance technique for using a command output as another command input, namely **piping (|)**, you can read about it in [advanced](#advanced) section.
 
 ### Command success/failure check
 
-It happens when you are interested to know if a previous command succeeded or failed. In linux every program returns a number to *operating system* on exit[^fn3]. By convention if the return value be `0` in means no error happened and other values indicates command **failure**.
+It happens when you are interested to know if a previous command succeeded or failed. In Linux every program returns a number to *operating system* on exit[^fn3]. By convention if the return value is *zero*, in means no error happened and other values indicates command **failure**.
 
 T> ### Command success/failure
 T>
@@ -155,8 +155,12 @@ echo "$?"
 ```bash
 # following command will fail due to lack of permission
 touch /not_enough_permission_to_create_file
+```
 
 `touch` command creates an empty file. Here we are trying to create the empty file `not_enough_permission_to_create_file` at the root of your file system. Without **sudo** this command will fail due to lack of enough permissions.
+
+```bash
+touch /not_enough_permission_to_create_file
 
 # check last command (touch) success/failure
 if [[ $? != 0 ]]; then
@@ -177,7 +181,7 @@ fi
 
 ## Argument parsing
 
-By convention most linux commands/programs supports a long and short version for the same flag/switch. Short version is usually the first letter of the long version. Some examples:
+By convention most Linux commands/programs supports a long and short version for the same flag/switch. Short version is usually the first letter of the long version. Some examples:
 
 short | long
 ------|--------
@@ -200,7 +204,7 @@ If your script supports *switches*, it means user is passing some information to
 ./backup.sh -o ~/my_backups
 ```
 
-In above code we are telling the script to save the output in `~/my_backups`[^fn4].
+In above code we are telling the script to save the output in `~/my_backups`[^fn4] directory.
 
 T> ### Flag vs Switch
 T>
@@ -252,7 +256,7 @@ Repeat above procedure for more switches.
 
 X> ## Argument Parsing Exercise
 X>
-X> Write a shell script to greet. Script receives the name via `--name` or `-n` switch to print `good night name` and if `-m` flag is set print `good morning name`. `name` is what value passed to script via `--name` flag. If `--name` or `-n` is not passed default value would be `everyone`. Example outputs:
+X> Write a shell script to greet. Script receives the name via `--name` or `-n` switch to print `good night name` and if `-m` flag is set, it should print `good morning name`. `name` is what value passed to script via `--name` flag. If `--name` or `-n` is not passed default value would be `everyone`. Example outputs:
 
 ```bash
 ./greet.sh
@@ -274,11 +278,15 @@ X> Write a shell script to greet. Script receives the name via `--name` or `-n` 
 # good morning Remisa
 ```
 
-For the answer refer to [Solutions](#solutions) section.
+For the answer refer to [Solutions](#solutions) section, [argument parsing](#argument_parsing).
+
+As you have noticed, first argument can be accessed via `$1`, second argument via `$2`...
+
+Same is true inside the body of a function to access passed arguments to the function.
 
 ## Organizing your Bash Script
 
-Using **Shellman** snippets you can well organize your bash script, so it works well and easy to read by other users. Recommended structure of `script.sh` from top to bottom is:
+Using **Shellman** snippets you can well organize your bash script, so it is easy to read by other users. Recommended structure of `script.sh` from top to bottom is:
 
 1. shebang (`bash` snippet)
 2. summary
@@ -297,7 +305,7 @@ In *summary* you provide some information about `script`.
 # Version:       1.0.0
 ```
 
-Use `region` snippet to define a `functions` region and put all of your functions there. Remember you need to define functions before you can use them so it is a good idea to put them on the top of the script (after summary).
+Use `region` snippet to define a `functions` region and put all of your functions there. Remember you need to define functions before you can use them so it is a good idea to put them on the top of the script (after summary). If function `B` calls function `A`, then function `A` definition should precede definition of function `B`.
 
 ```bash
 #!/usr/bin/env bash
@@ -307,18 +315,52 @@ Use `region` snippet to define a `functions` region and put all of your function
 # >>>>>>>>>>>>>>>>>>>>>>>> functions >>>>>>>>>>>>>>>>>>>>>>>>
 
 function greet() {
+  # access the argument via $1
   echo "Hello $1"
 }
 
 # <<<<<<<<<<<<<<<<<<<<<<<< functions <<<<<<<<<<<<<<<<<<<<<<<<
 
-greet "Shellman" # call the function
+greet "Shellman" # call the function and pass an argument
+```
+
+## Double Quote vs Single Quote vs Backtick
+
+Use *double quotation* where you have a variable that contains *whitespace*. Any variable inside a double quotation will be replaced by its value:
+
+```bash
+var1="Hello World!"
+echo "$var1" # Hello World!
+```
+
+T> ### Double Quote
+T>
+T> By default use Double Quote `"` when defining variable or trying to access a variable value.
+
+Use *single quotation* where you need to define a variable that contains special characters. Anything inside a single quotation will remain exact the same:
+
+```bash
+var1="Hello World!"
+echo "$var1" # Hello World!
+
+var2='$var1'
+echo "$var2" # $var1
+
+var3='"&$*'
+echo "$var3" # "&$*
+```
+
+Use *backtick* for [command substitution](#command-substitution)
+
+```bash
+directoryList=`ls | xargs echo`
+echo "$directoryList"
 ```
 
 [^fn1]: In *Linux* unlike *Windows*, file extensions has no special meaning to *operating system* but still you can use them to remember which file type you are dealing with. **vscode** uses file extensions to recognize file types (`.sh` for *Shellscript*)
 
-[^fn2]: In *Linux/Unix* systems, **root** is the most privileged user.
+[^fn2]: In *Linux/Unix* systems, **root** is the most privileged user (same as *Administrator* in *Windows*).
 
-[^fn3]: If you have ever programmed in `C/C++`, you may noticed a `return 0` as a default behavior, that is the code your program is returning to *OS*, here `0` as success.
+[^fn3]: This number is between 0 and 255 (one byte). If you have ever programmed in `C/C++`, you may noticed a `return 0` as a default behavior, that is the code your program is returning to *OS*, here `0` as success.
 
 [^fn4]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`.
