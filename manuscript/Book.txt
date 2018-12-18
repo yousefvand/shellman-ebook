@@ -5,6 +5,7 @@ basics.md
 namespaces.md
 ns/string.md
 ns/math.md
+ns/array.md
 advanced.md
 solutions.md
 whys.md
