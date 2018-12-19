@@ -5,7 +5,13 @@ basics.md
 namespaces.md
 ns/string.md
 ns/math.md
+ns/date.md
 ns/array.md
+ns/function.md
+ns/command.md
+ns/archive.md
+ns/crypto.md
+ns/misc.md
 advanced.md
 solutions.md
 whys.md

@@ -111,6 +111,16 @@ echo "$a $b$c"
 
 The whitespace between `$a` and `$b` is the whitespace between `Hello` and `world` in the output.
 
+If we want to assign a variable if and only if it has no value currently, then we can use `assign if empty` snippet:
+
+```bash
+#!/usr/bin/env bash
+
+: "${variable:=default}"
+```
+
+In above example `variable` is set only if it is *empty*.
+
 ## Variable Types
 
 The only **type** you have in shell is **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations, and return `String` back to you.
