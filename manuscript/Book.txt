@@ -13,6 +13,9 @@ ns/function.md
 ns/command.md
 ns/archive.md
 ns/crypto.md
+ns/http.md
+ns/ftp.md
+ns/git.md
 ns/misc.md
 advanced.md
 solutions.md
