@@ -6,7 +6,9 @@ namespaces.md
 ns/string.md
 ns/math.md
 ns/date.md
+ns/time.md
 ns/array.md
+ns/directory.md
 ns/function.md
 ns/command.md
 ns/archive.md
