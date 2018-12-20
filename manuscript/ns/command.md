@@ -61,7 +61,7 @@ sudo nice -n 19 cp ~/file ~/tmp
 
 In above example we are copying a file from *home* to *tmp* folder, and schedule minimum CPU time to `cp`.
 
-### if cmd exists
+### if cmd exists {#cmd-exist}
 
 Check if a desired command exists (program is installed).
 

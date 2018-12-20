@@ -100,9 +100,17 @@ unset myArray[1]
 echo ${myArray[@]} # Alice Eve
 ```
 
-### find
+### filter
 
-Find elements in array which match to regex.
+Filter elements of an array based on given pattern.
+
+```bash
+#!/usr/bin/env bash
+
+myArray=('Alice' '22' 'Bob' '16' 'Eve')
+filtered=(`for i in ${myArray[@]} ; do echo $i; done | grep [0-9]`)
+echo ${filtered[@]} # 22 16
+```
 
 ```bash
 #!/usr/bin/env bash

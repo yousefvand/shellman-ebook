@@ -3,6 +3,8 @@ prerequisites.md
 structure.md
 basics.md
 namespaces.md
+ns/loop.md
+ns/logic.md
 ns/string.md
 ns/math.md
 ns/date.md
@@ -15,6 +17,10 @@ ns/archive.md
 ns/crypto.md
 ns/http.md
 ns/ftp.md
+ns/file.md
+ns/color.md
+ns/format.md
+ns/system.md
 ns/git.md
 ns/misc.md
 advanced.md

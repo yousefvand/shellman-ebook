@@ -140,6 +140,16 @@ result=`echo "scale=7;sqrt($var)" | bc`
 echo "$result" # 1.4142135
 ```
 
+### random
+
+Generate random number between *min* and *max*
+
+```bash
+#!/usr/bin/env bash
+
+echo $((5000 + RANDOM % $((65535-5000)))) # 27502
+```
+
 ### constants
 
 Some useful math constants (π, e, 𝛾...).
