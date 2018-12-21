@@ -23,6 +23,7 @@ ns/format.md
 ns/system.md
 ns/git.md
 ns/misc.md
+ns/lib.md
 advanced.md
 solutions.md
 whys.md
