@@ -1,6 +1,6 @@
 ## color
 
-Write text in color. TO write in color we use `tput setaf` command followed by *color code*. Here is color code table:
+Write text in color. `color` *namespace* contains commands to write in different foreground colors. To write in color we use `tput setaf` command followed by *color code*. Here is color code table:
 
 Color   | Code|
 --------|:----:
@@ -20,3 +20,9 @@ To set *foreground color* to red we use `tput setaf 1` command and after some ou
 
 echo `tput setaf 1`hello world`tput sgr0`
 ```
+
+X> ## Colorful Text
+X>
+X> Write a shell script that prints *Hello World!* in all 8 colors using a `for` *loop*.
+
+For the answer refer to [Solutions](#solutions) section, [colorful text](#colorful_text).

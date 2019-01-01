@@ -6,7 +6,7 @@ I was thinking about how to simplify usage of Shellman by sharing some tips that
 
 The hard part of *shell scripting* is not *shell scripting* itself, it is knowing the correct *command* and *switches*, so if you can do it in *terminal*, you can do it easily via shell script too. *Shell scripting* is useful for common tasks automation.
 
-This book is a guide for beginners who want to start shell scripting with **Shellman** effectively. If you are of pragmatic type people then go ahead and read **Basics** section and desired **namespaces** but if you are interested in *reasons behind rules*, a [Whys](#whys) section at the end of the book is added for you.
+This book is a guide for beginners who want to start shell scripting with **Shellman** effectively. If you are of pragmatic type people then go ahead and read **Basics** section and desired **namespaces**.
 
 Also the business model of **Shellman** is published on [medium](https://medium.com/@remisa.yousefvand/shellman-reborn-f2cc948ce3fc).
 

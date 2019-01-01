@@ -22,6 +22,33 @@ Create directories as required.
 mkdir -p "parent dir"/"child dir"
 ```
 
+X> ## Nested Directories
+X>
+X> Write a shell script to create a test directory containing 26 directories named from `a` to `z` each containing 100 directories from `1` to `100` with a single command.
+
+Directory structure should look like:
+
+```bash
+── test
+│   ├── a
+│   │   ├── 1
+│   │   ├── 2
+│   .   .   .
+│   .   .   .
+│   │   └── 100
+│   ├── b
+│   │   ├── 1
+│   │   ├── 2
+│   .   .   .
+│   .   .   .
+│   │   └── 100
+│   ├── c
+│   .   .
+│   .   .
+```
+
+For the answer refer to [Solutions](#solutions) section, [nested directories](#nested_directories).
+
 ### find
 
 Find files or directories based on *criteria* in the given path up to N level depth.

@@ -28,6 +28,12 @@ result=$((var1 * var2))
 echo "$result" # 12
 ```
 
+X> ## Factorial
+X>
+X> Write a function which gets a number `N` and prints `N!`.
+
+For the answer refer to [Solutions](#solutions) section, [factorial](#factorial).
+
 ### add +
 
 Given two numbers, returns sum of them.

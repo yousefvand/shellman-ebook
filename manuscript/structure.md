@@ -1,6 +1,6 @@
 # Shellman Structure {#structure}
 
-*Shellman* divides its content into semantical categories named **namespace**. The concept is already familiar to programmers, but in simple words it means *keeping related materials together under a generic name*. So if you need to do something with `String` like changing it to `upper case` then it makes sense to look at `String` namespace.
+*Shellman* divides its content into semantical categories named **namespace**. The concept is already familiar to programmers, but in simple words it means *keeping related materials together under a generic name*. So if you need to do something with `String` like changing it to `upper case` then it makes sense to look at `string` namespace.
 
 ![String Namespace](images/ns-string.png)
 

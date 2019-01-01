@@ -26,4 +26,3 @@ ns/misc.md
 ns/lib.md
 advanced.md
 solutions.md
-whys.md
