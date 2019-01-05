@@ -15,16 +15,18 @@ var1=32
 var2=33
 
 if (( $var1 == $var2 )); then
-   echo "equal"
+  echo "equal"
 elif (( $var1 >= $var2 )); then
-   echo "bigger"
+  echo "bigger"
 else
-   echo "smaller"
+  echo "smaller"
 fi
 # smaller
 ```
 
 For string comparison use `[ ]`.
+
+`elif` part can be repeated as much as necessary.
 
 ```bash
 #!/usr/bin/env bash
@@ -34,13 +36,44 @@ str2="hello"
 str3="bye"
 
 if [ "$str1" = "$str2" ]; then
-    echo "1"
+  echo "1 = 2"
 elif [ "$str1" = "$str3" ]; then
-    echo "2"
+  echo "1 = 3"
+elif [ "$str2" = "$str3" ]; then
+  echo "2 = 3"
 else
-    echo "3"
+  echo "no equal pair"
 fi
-# 2
+# 1 = 3
+```
+
+Simpler forms of `if`:
+
+```bash
+#!/usr/bin/env bash
+
+str1="bye"
+str2="hello"
+
+if [ "$str1" = "$str2" ]; then
+  echo "equal"
+fi
+```
+
+or `if/else`:
+
+```bash
+#!/usr/bin/env bash
+
+str1="bye"
+str2="hello"
+
+if [ "$str1" = "$str2" ]; then
+  echo "equal"
+else
+  echo "NOT equal"
+fi
+# NOT equal
 ```
 
 ### iff
