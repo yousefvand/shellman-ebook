@@ -17,7 +17,7 @@ function banner_simple() {
 banner_simple "sample banner"
 ```
 
-![simple banner](../images/banner-simple.png)
+![simple banner](images/banner-simple.png)
 
 ### banner color
 
@@ -34,7 +34,7 @@ function banner_color() {
 banner_color yellow "sample banner"
 ```
 
-![simple banner](../images/banner-color.png)
+![simple banner](images/banner-color.png)
 
 ### import
 
@@ -70,11 +70,11 @@ chooseOption "Choose:" 1 "${options[@]}"; choice=$? # call function
 echo "${options[$choice]}" selected # print selected item by user
 ```
 
-![options 1](../images/choice1.png)
+![options 1](images/choice1.png)
 
-![options 2](../images/choice2.png)
+![options 2](images/choice2.png)
 
-![options 3](../images/choice3.png)
+![options 3](images/choice3.png)
 
 ### progress
 
@@ -90,7 +90,7 @@ function progressBar() {
 progressBar .2 "Installing foo..."
 ```
 
-![progress](../images/progress.png)
+![progress](images/progress.png)
 
 ### scan
 

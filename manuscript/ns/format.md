@@ -2,7 +2,7 @@
 
 Write text in italic, bold, dim or reverse contrast.
 
-![formated text](../images/format.png)
+![formated text](images/format.png)
 
 ### bold
 

@@ -193,12 +193,13 @@ fi
 
 By convention most Linux commands/programs supports a long and short version for the same flag/switch. Short version is usually the first letter of the long version. Some examples:
 
-short | long
-------|--------
- -v   | --verbose
- -s   | --silent
- -f   | --force
- -o   | --output
+{width="narrow"}
+| short |    long   |
+|-------|-----------|
+|  -v   | --verbose |
+|  -s   | --silent  |
+|  -f   | --force   |
+|  -o   | --output  |
 
 You may want to support different *switches/flags* by your script and act differently based on them. Suppose your script name is `backup.sh`. With supporting flags someone can run it as:
 

@@ -140,12 +140,12 @@ done
 
 Sometimes output is arranged in multiple columns while we are interested in one or few of them. For example output of `docker images` command:
 
-REPOSITORY       |   TAG      |      IMAGE ID     |       CREATED      |     SIZE
-:----------------|:-----------|:-----------------:|:------------------:|:-----------
-sonatype/nexus3  |   3.13.0   |   777b20c20405    |    3 months ago    |    505MB
-sonatype/nexus3  |   latest   |   777b20c20405    |    3 months ago    |    505MB
-busybox          |   glibc    |   c041448940c8    |    4 months ago    |    4.42MB
-busybox          |   latest   |   c041448940c8    |    4 months ago    |    4.42MB
+|    REPOSITORY    |     TAG    |     IMAGE ID      |       CREATED      |    SIZE    |
+|:-----------------|:-----------|:-----------------:|:------------------:|:-----------|
+| sonatype/nexus3  |   3.13.0   |   777b20c20405    |    3 months ago    |    505MB   |
+| sonatype/nexus3  |   latest   |   777b20c20405    |    3 months ago    |    505MB   |
+| busybox          |   glibc    |   c041448940c8    |    4 months ago    |    4.42MB  |
+| busybox          |   latest   |   c041448940c8    |    4 months ago    |    4.42MB  |
 
 What if we are just interested in column one?
 
