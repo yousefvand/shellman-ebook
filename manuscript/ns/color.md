@@ -2,6 +2,7 @@
 
 Write text in color. `color` *namespace* contains commands to write in different foreground colors. To write in color we use `tput setaf` command followed by *color code*. Here is color code table:
 
+{width="narrow"}
 | Color   | Code |
 |---------|:----:|
 | Black   |0     |
