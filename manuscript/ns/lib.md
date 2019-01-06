@@ -34,7 +34,7 @@ function banner_color() {
 banner_color yellow "sample banner"
 ```
 
-![simple banner](images/banner-color.png)
+![color banner](images/banner-color.png)
 
 ### import
 
@@ -74,7 +74,7 @@ echo "${options[$choice]}" selected # print selected item by user
 
 ![options 2](images/choice2.png)
 
-![options 3](images/choice3.png)
+![choice](images/choice3.png)
 
 ### progress
 

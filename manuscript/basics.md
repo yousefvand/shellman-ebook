@@ -45,6 +45,7 @@ To run a command from your script just write it as you do in terminal:
 
 rm some_file
 ```
+
 If the command need **root**[^fn2] privileges (in *Windows* it is known as *Admin*), prefix the command with **sudo**:
 
 ```bash
@@ -54,6 +55,19 @@ sudo rm some_file
 ```
 
 If you need the result of the executed command refer to [command substitution](#command-substitution).
+
+## Multiline Command
+
+A single command can be written in multiple lines if each line ends in a `backslash`.
+
+```bash
+#!/usr/bin/env bash
+
+curl --request GET -sL \
+  --user-agent 'Shellman' \
+  --cookie 'key=value' \
+  --url 'http://example.com'
+```
 
 ## Variables
 
@@ -312,7 +326,7 @@ In *summary* you provide some information about `script`.
 # Title:         test
 # Description:   a test script
 # Author:        Remisa <remisa.yousefvand@gmail.com>
-# Date:          2018-12-15
+# Date:          2019-01-06
 # Version:       1.0.0
 ```
 

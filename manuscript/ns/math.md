@@ -132,7 +132,7 @@ echo $((2 ** 4)) # 16
 echo $((3 ** 3)) # 27
 ```
 
-### square root √
+### square root
 
 Returns square root of given number up to given *precision*.
 
@@ -158,4 +158,4 @@ echo $((5000 + RANDOM % $((65535-5000)))) # 27502
 
 ### constants
 
-Some useful math constants (π, e, 𝛾...).
+Some useful math constants.
