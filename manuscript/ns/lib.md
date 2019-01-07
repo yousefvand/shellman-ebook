@@ -2,7 +2,81 @@
 
 Contains a set ol library functions and calling them under `fn / fx` namespaces. Functions can be accessed through `fn...` and their usage through `fx...`
 
-### banner simple
+### Math
+
+Math related functions.
+
+#### math sum
+
+Calculates sum of given integers. Available as `fn math sum` snippet.
+
+Example usage:
+
+```bash
+#!/usr/bin/env bash
+
+function sum () {
+  local result=0
+  for item in $@; do
+    ((result += item))
+  done
+  echo $result
+}
+
+var1=2; var2=5; var3=4
+result=`sum $var1 $var2 $var3`
+echo $result
+```
+
+#### math product
+
+Calculates product of given integers. Available as `fn math product` snippet.
+
+Example usage:
+
+```bash
+#!/usr/bin/env bash
+
+function product () {
+  local result=1
+  for item in $@; do
+    ((result *= item))
+  done
+  echo $result
+}
+
+var1=2; var2=3; var3=5
+result=`product $var1 $var2 $var3`
+echo $result
+```
+
+#### math average
+
+Calculates average of given integers. Available as `fn math average` snippet.
+
+Example usage:
+
+```bash
+#!/usr/bin/env bash
+
+function average () {
+  local result=0
+  for item in $@; do
+    ((result += item))
+  done
+  echo $((result / $#))
+}
+
+var1=2; var2=3; var3=4
+result=`average $var1 $var2 $var3`
+echo $result
+```
+
+### Misc
+
+Other useful functions.
+
+#### banner simple
 
 A function to print simple banners. To define the function use `fn banner simple` at the top of script so later it can be called via `fx banner simple`:
 
@@ -19,7 +93,7 @@ banner_simple "sample banner"
 
 ![simple banner](images/banner-simple.png)
 
-### banner color
+#### banner color
 
 A function to print colorful banners. To define the function use `fn banner color` at the top of script so later it can be called via `fx banner color`:
 
@@ -36,7 +110,7 @@ banner_color yellow "sample banner"
 
 ![color banner](images/banner-color.png)
 
-### import
+#### import
 
 Use functions defined in other bash script files inside your script. To define the function use `fn import` at the top of script so later it can be called via `fx import`. Default folder for library files is `lib` relative to calling script.
 
@@ -54,7 +128,7 @@ import "mylib"
 
 In above example with `import "mylib"` we are importing functions defined in `lib/mylib.sh`.
 
-### options
+#### options
 
 A function to print multi choice questions. To define the function use `fn options` at the top of script so later it can be called via `fx options` with question and choices. Default choice is zero based so 0 means first option, 1 means second...
 
@@ -76,7 +150,7 @@ echo "${options[$choice]}" selected # print selected item by user
 
 ![choice](images/choice3.png)
 
-### progress
+#### progress
 
 A dummy progress bar. You can use it as real progress bar with a little change.
 
@@ -92,7 +166,7 @@ progressBar .2 "Installing foo..."
 
 ![progress](images/progress.png)
 
-### scan
+#### scan
 
 Scan a host port range (tcp/udp).
 

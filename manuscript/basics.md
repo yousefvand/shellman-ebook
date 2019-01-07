@@ -69,6 +69,14 @@ curl --request GET -sL \
   --url 'http://example.com'
 ```
 
+You can write multiple commands in a single line and seperate them by semicolon (`;`).
+
+```bash
+#!/usr/bin/env bash
+
+var1=2; var2=3; var3="hello"
+```
+
 ## Variables
 
 There is a simple difference between when you define a variable and when use its value. In latter case you need to prefix a `$` to the variable name.
@@ -148,7 +156,7 @@ It is common practice to store the output of commands inside variables for furth
 1. `` output=`command` ``
 2. `output=$(command)`
 
-For the sake of brevity and consistency, we will use method one (backtick) in this book.
+In some references method two is recommended specially for nested command substitutions but for the sake of brevity and consistency, we will use method one (backtick) in this book.
 
 To store results of `ls` command in a variable named `output`:
 

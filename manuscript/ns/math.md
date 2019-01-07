@@ -1,6 +1,6 @@
 ## math
 
-Contains `Math` related operations.
+Contains `Math` related operations. Math functions are available under `fn math ...` namespace.
 
 ### reminder %
 
