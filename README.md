@@ -6,8 +6,8 @@ Learn how to write professional bash scripts easily using [Shellman](https://mar
 
 ## Download ebook
 
-- [pdf](https://github.com/remisa-yousefvand/shellman-ebook/files/2730547/shellman-2019-01-06.pdf.zip)
+- [pdf](link)
 
-- [epub](https://github.com/remisa-yousefvand/shellman-ebook/files/2730548/shellman-2019-01-06.epub.zip)
+- [epub](link)
 
-- [mobi](https://github.com/remisa-yousefvand/shellman-ebook/files/2730550/shellman-2019-01-06.mobi.zip)
+- [mobi](link)
