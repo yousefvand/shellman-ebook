@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/remisa-yousefvand/shellman-ebook.git"
+    "url": "git+https://github.com/yousefvand/shellman-ebook.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/remisa-yousefvand/shellman-ebook/issues"
+    "url": "https://github.com/yousefvand/shellman-ebook/issues"
   },
-  "homepage": "https://github.com/remisa-yousefvand/shellman-ebook#readme",
+  "homepage": "https://github.com/yousefvand/shellman-ebook#readme",
   "devDependencies": {
     "cspell": "^3.1.3"
   }
