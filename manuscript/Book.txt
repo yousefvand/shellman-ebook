@@ -20,6 +20,7 @@ ns/ftp.md
 ns/file.md
 ns/color.md
 ns/format.md
+ns/process.md
 ns/system.md
 ns/git.md
 ns/misc.md
