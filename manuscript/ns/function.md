@@ -1,4 +1,4 @@
-## function
+## function {#function-snippets}
 
 Contains `function` related operations available through **func** namespace. A function can return a number between 0 to 255 which can be retrieved through `$?` (available as `func ret val` snippet).
 
