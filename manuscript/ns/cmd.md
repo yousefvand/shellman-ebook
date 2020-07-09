@@ -1,6 +1,6 @@
-## command
+## cmd
 
-Contains `command` execution related operations available through **cmd** namespace.
+Contains `command` execution related operations.
 
 ### cmd
 
@@ -15,7 +15,7 @@ echo "$response"
 
 In above example using `curl` we retrieve the content of `http://example.com` and store it in `response` variable (`-s` flag tells `curl` to work in silent mode).
 
-### success check
+### cmd success check
 
 Check if last command has succeeded.
 
@@ -32,7 +32,7 @@ fi
 # command succeeded
 ```
 
-### failure check
+### cmd failure check
 
 Check if last command has failed.
 
@@ -49,7 +49,7 @@ fi
 # command failed
 ```
 
-### nice
+### cmd nice
 
 Run a command with modified scheduling priority. Niceness  values range  from  `-20` (highest priority) to `19` (lowest priority) and default value is `0`.
 
@@ -61,17 +61,17 @@ sudo nice -n 19 cp ~/file ~/tmp
 
 In above example we are copying a file from *home* to *tmp* folder, and schedule minimum CPU time to `cp`.
 
-### renice
+### cmd renice
 
 Change a running process priority. Niceness  values range  from  `-20` (highest priority) to `19` (lowest priority) and default value is `0`.
 
 ```bash
 #!/usr/bin/env bash
 
-sudo renice -n -5 -p `pgrep dockerd`
+for p in $(pidof "chrome"); do sudo renice -n -5 -p "$p"; done
 ```
 
-In above example we are changing priority of `dockerd` process (docker daemon on a system where docker is installed) to higher than normal.
+In above example we are changing priority of `chrome` process and its child processes to higher than normal.
 
 ### if cmd exists {#cmd-exist}
 

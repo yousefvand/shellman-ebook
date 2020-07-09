@@ -1,6 +1,6 @@
 ## loop
 
-Contains `while`, `until`, `for`.
+Contains `while`, `until` and `for`. Actually `for` doesn't have `loop` prefix so by typing `loop` you won't see it. That's because of readability limitations so if you need any kind of `for` type `for`.
 
 ### while
 

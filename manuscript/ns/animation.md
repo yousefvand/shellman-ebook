@@ -72,7 +72,7 @@ function animate () {
 animate "${frames[@]}" 0.2
 ```
 
-You can find base frames for  your animations by searching the web for `ascii art`. For more examples visit [project github page](https://github.com/yousefvand/shellman/tree/master/samples/animation).
+You can find base frames for  your animations by searching the web for `ascii art`. For more examples visit [project repository page](https://github.com/yousefvand/shellman/tree/master/samples/animation).
 
 ### pacman
 

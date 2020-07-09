@@ -2,7 +2,7 @@
 
 Contains `FTP` related operations.
 
-### list
+### ftp list
 
 Get the list of files on the ftp server at specific path.
 
@@ -12,7 +12,7 @@ Get the list of files on the ftp server at specific path.
 curl ftp://remisa:1234@mydomain/backup/
 ```
 
-### download
+### ftp download
 
 Download specified file from ftp server.
 
@@ -22,7 +22,7 @@ Download specified file from ftp server.
 curl ftp://remisa:1234@mydomain/backup/latest.zip
 ```
 
-### upload
+### ftp upload
 
 Upload specified file to ftp server at desired path.
 
@@ -32,7 +32,7 @@ Upload specified file to ftp server at desired path.
 curl -T test.zip ftp://remisa:1234@mydomain/backup/
 ```
 
-### delete file
+### ftp delete file
 
 Delete specified file from ftp server.
 
@@ -42,7 +42,7 @@ Delete specified file from ftp server.
 curl ftp://remisa:1234@mydomain/backup/test.zip -Q "DELE test.zip"
 ```
 
-### rename
+### ftp rename
 
 Rename specified file/directory on ftp server.
 

@@ -2,7 +2,7 @@
 
 Contains `System` related information and operations.
 
-### uptime
+### system uptime
 
 System uptime (hh:mm:ss).
 
@@ -13,9 +13,20 @@ sys_uptime=`uptime | cut -d ' ' -f2`
 echo "$sys_uptime" # 03:26:47
 ```
 
-### memory info
+### system memory info
 
-System memory information in kilobytes (KB).
+System memory information in kilobytes (KB). Available memory information:
+
+- MemTotal
+- MemFree
+- MemAvailable
+- Cached
+- Buffers
+- Active
+- Inactive
+- SwapTotal
+- SwapFree
+- SwapCached
 
 ```bash
 #!/usr/bin/env bash
@@ -24,7 +35,7 @@ sysMemoryMemTotal=`cat /proc/meminfo | grep 'MemTotal' | awk '{print $2}' | head
 echo "$sysMemoryMemTotal" # total system memory in KB
 ```
 
-### distro name
+### system distro name
 
 Operating System ID (i.e. Ubuntu).
 
@@ -35,7 +46,7 @@ distroName=`lsb_release -i | awk '{print $3}'`
 echo "$distroName"
 ```
 
-### distro version
+### system distro version
 
 Operating System release version (i.e. 16.04).
 
@@ -46,7 +57,7 @@ distroName=`lsb_release -r | awk '{print $2}'`
 echo "$distroName"
 ```
 
-### distro codename
+### system distro codename
 
 Operating System codename (i.e. xenial).
 
@@ -57,7 +68,7 @@ distroName=`lsb_release -c | awk '{print $2}'`
 echo "$distroName"
 ```
 
-### kernel name
+### system kernel name
 
 Operating System kernel name (i.e. Linux).
 
@@ -68,7 +79,7 @@ kernelName=`uname -s`
 echo "$kernelName" # Linux
 ```
 
-### kernel release
+### system kernel release
 
 Operating System kernel release (i.e. 4.4.0-140-generic).
 
@@ -79,7 +90,7 @@ kernelRelease=`uname -r`
 echo "$kernelRelease" # 4.4.0-140-generic
 ```
 
-### processor type
+### system processor type
 
 Operating System processor type (i.e. x86_64).
 
@@ -90,7 +101,7 @@ processorType=`uname -p`
 echo "$processorType" # x86_64
 ```
 
-### processor count
+### system processor count
 
 Number of processors (cores).
 
@@ -101,7 +112,7 @@ processorCount=`lscpu | grep 'CPU(s)' |awk '{print $2}' | head -n 1`
 echo "$processorCount" # 4
 ```
 
-### processor architecture
+### system processor architecture
 
 Processor architecture (i.e. x86_64).
 
@@ -112,7 +123,7 @@ processorArchitecture=`lscpu | grep 'Architecture' |awk '{print $2}' | head -n 1
 echo "$processorArchitecture" # x86_64
 ```
 
-### processor model
+### system processor model
 
 Processor model name (i.e. Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz).
 
@@ -121,4 +132,20 @@ Processor model name (i.e. Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz).
 
 processorModel=`lscpu | grep 'Model name' |cut -d ' ' -f 3- | sed -e 's/^[[:space:]]*//'`
 echo "$processorModel" # Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+```
+
+### system service manage
+
+Manage service (daemon) operations.
+
+- enable
+- disable
+- start
+- stop
+- reload
+- restart
+- status
+
+```bash
+sudo systemctl status network-manager
 ```

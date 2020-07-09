@@ -2,7 +2,7 @@
 
 Contains `Process` related information and operations.
 
-### list
+### process list
 
 List all system processes.
 
@@ -19,7 +19,7 @@ ps -A
 # ...
 ```
 
-### ID
+### process ID
 
 Get process ID by its name. Many Linux commands need *process id* (PID).
 
@@ -30,7 +30,7 @@ firefoxPID=`pgrep firefox`
 echo $firefoxPID
 ```
 
-### Kill
+### process Kill
 
 Kill a process by its name. `kill` command needs a *PID* (process ID) which we can find by `pgrep` command via [command substitution](#command-substitution).
 

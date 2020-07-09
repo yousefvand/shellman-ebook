@@ -2,9 +2,9 @@
 
 Contains `event` related operations available via **event** namespace. There are two events supported by `Shellman`. `EXIT` and `CTRL+C`. Be careful about registering events multiple times. The last one you register takes control of what happens when event happens. If you have multiple things to do, move them all to a single function and register that function once.
 
-### exit
+### event EXIT
 
-If you need to run some commands before your script exits, you can put them in a function and call them everywhere your script may exits. But there is an easier way to do that. Register an `Exit` handler function and it would be executed when your script execution is finished:
+If you need to run some commands before your script exits, you can put them in a function and call them everywhere your script may exits. But there is an easier way to do that. Register an `EXIT` handler function and it would be executed when your script execution is finished:
 
 ```bash
 # Exit event handler
@@ -23,9 +23,9 @@ The `trap on_exit EXIT` part registers `on_exit` function to `EXIT` event. You n
 
 The `tput cnorm` part ensures we have a visible cursor when script exits. If you are using [animation](#animation-snippets) feature of `Shellman` don't remove it. Anyway it is harmless and you can leave it there even if no animation is used.
 
-### CTRL+C
+### event CTRL+C | event terminated
 
-Available as `CTRL+C` or `terminate` under `event` namespace. If you need to do something in case your script gets interrupted (like when user presses `CTRL` and `C` on keyboard) you can register a handler function for it:
+Available as `CTRL+C` | `terminated` under `event` namespace. If you need to do something in case your script gets interrupted (like when user presses `CTRL` and `C` on keyboard) you can register a handler function for it:
 
 ```bash
 # CTRL+C event handler

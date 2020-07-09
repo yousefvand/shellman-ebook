@@ -19,7 +19,7 @@ myFunction "some argument" "another argument"
 # another argument
 ```
 
-### args
+### func args
 
 Access to function arguments.
 
@@ -34,7 +34,7 @@ myFunction "some argument" "another argument"
 # some argument another argument
 ```
 
-### args count
+### func args count
 
 Number of function arguments.
 
@@ -49,7 +49,7 @@ myFunction "some argument" "another argument"
 # 2
 ```
 
-### ret val
+### func ret val
 
 Check the value last function call has returned (0-255). By convention, zero is returned if no error occurs, otherwise a non-zero value is returned.
 

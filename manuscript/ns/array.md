@@ -2,7 +2,7 @@
 
 Contains `Array` related operations.
 
-### declare
+### array declare
 
 Declare a literal array.
 
@@ -20,7 +20,7 @@ done
 # Eve
 ```
 
-### add | push
+### array add | array push
 
 Add a new item to the array.
 
@@ -40,7 +40,7 @@ done
 # Shellman
 ```
 
-### all
+### array all
 
 All items of array.
 
@@ -51,7 +51,7 @@ myArray=("Alice" "Bob" "Eve")
 echo ${myArray[@]} # Alice Bob Eve
 ```
 
-### at index
+### array at index
 
 Returns item Nth from array (N = index).
 
@@ -62,7 +62,7 @@ myArray=("Alice" "Bob" "Eve" "Shellman")
 echo ${myArray[2]} # Eve
 ```
 
-### concat
+### array concat
 
 Returns an array made of concatenation of two given arrays.
 
@@ -75,7 +75,7 @@ newArray=("${array1[@]}" "${array2[@]}")
 echo ${newArray[@]} # Alice Bob Eve 1 2 3
 ```
 
-### delete
+### array delete
 
 Delete entire array.
 
@@ -88,7 +88,7 @@ echo ${myArray[@]}
 #
 ```
 
-### delete at
+### array delete at
 
 Delete Nth item in array (N = index)
 
@@ -100,7 +100,7 @@ unset myArray[1]
 echo ${myArray[@]} # Alice Eve
 ```
 
-### filter
+### array filter
 
 Filter elements of an array based on given pattern.
 
@@ -119,7 +119,7 @@ myArray=("Alice" "Bob" "Eve")
 echo ${myArray[@]/e/} # Alice Eve
 ```
 
-### iterate | for each
+### array iterate | array forEach
 
 Iterate over array items.
 
@@ -137,7 +137,7 @@ done
 # Eve
 ```
 
-### length
+### array length
 
 Returns length of array.
 
@@ -148,7 +148,18 @@ myArray=("Alice" "Bob" "Eve")
 echo ${#myArray[@]} # 3
 ```
 
-### range
+### array replace
+
+Find and replace items in array based on regex.
+
+```bash
+#!/usr/bin/env bash
+
+myArray=("Alice" "Bob" "Eve")
+echo ${myArray[@]//e/9} # Alic9 Bob Ev9
+```
+
+### array slice | array range
 
 Return items from *index* up to the *count*.
 
@@ -161,18 +172,7 @@ echo ${myArray[@]:1:3} # Bob Eve Shellman
 
 In above example we are interested in 3 items of array starting at index 1 (arrays are zero base indexed)
 
-### replace
-
-Find and replace items in array based on regex.
-
-```bash
-#!/usr/bin/env bash
-
-myArray=("Alice" "Bob" "Eve")
-echo ${myArray[@]//e/9} # Alic9 Bob Ev9
-```
-
-### set elements
+### array set element
 
 Set element given value as Nth element.
 
@@ -182,15 +182,4 @@ Set element given value as Nth element.
 myArray=("Alice" "Bob" "Eve")
 myArray[1]="Shellman"
 echo ${myArray[@]} # Alice Shellman Eve
-```
-
-### slice
-
-Returns a subarray starting at *index* and containing *count* items of the original array.
-
-```bash
-#!/usr/bin/env bash
-
-myArray=("Alice" "Bob" "Eve" "Shellman")
-echo ${myArray[@]:1:2} # Bob Eve
 ```

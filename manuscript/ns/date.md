@@ -2,7 +2,7 @@
 
 Contains `Date` related operations.
 
-### now short
+### date now short
 
 Short version of current system *date*.
 
@@ -13,7 +13,7 @@ dateShort=`date -I`
 echo "$dateShort" # 2019-01-06
 ```
 
-### now UTC
+### date now UTC
 
 Returns current system time in *Coordinated Universal Time* format.
 
@@ -24,7 +24,7 @@ dateUTC=`date -u`
 echo "$dateUTC" # Sunday, January 06, 2019
 ```
 
-### now year
+### date now year
 
 Current year.
 
@@ -35,7 +35,7 @@ year=`date +%Y`
 echo "$year" # 2019
 ```
 
-### now monthNumber
+### date now monthNumber
 
 Current month number.
 
@@ -46,7 +46,7 @@ monthNumber=`date +%m`
 echo "$monthNumber" # 01
 ```
 
-### now monthName
+### date now monthName
 
 Current month name.
 
@@ -57,7 +57,7 @@ monthName=`date +%B` # %B for full month name, %b for abbreviated month name
 echo "$monthName" # January
 ```
 
-### now dayOfMonth
+### date now dayOfMonth
 
 Current day of month.
 
@@ -68,7 +68,7 @@ dayOfMonth=`date +%d`
 echo "$dayOfMonth" # 06
 ```
 
-### now dayOfWeek
+### date now dayOfWeek
 
 Current weekday name.
 
@@ -79,7 +79,7 @@ dayOfWeek=`date +%A` # %A for full weekday name, %a for abbreviated weekday name
 echo "$dayOfWeek" # Sunday
 ```
 
-### now dayOfYear
+### date now dayOfYear
 
 Current day of year (1-366).
 

@@ -25,6 +25,8 @@ This line tells the *operating system* which script engine should be used to run
 #!/usr/bin/env bash
 ```
 
+This is available via `shebang` | `bash` snippet.
+
 If a shell script doesn't contain `shebang` then whoever gonna execute such an script needs to specify the script engine manually and pass the script as an argument to it:
 
 ```bash
@@ -118,7 +120,14 @@ T> ### Variable Access Rule
 T>
 T> To access a variable value prefix it with `$`
 
-As you may guessed in assignment rule, *space* has a special meaning in *shell scripting* and we should take care of where a *space* may appear. For example our variable value may contains *space*:
+As you may guessed in assignment rule, *space* has a special meaning in *shell scripting*. With *space* over `=` shell assumes variable is a command and `=` and variable value are parameters to that command.
+
+```bash
+firstName = Remisa
+# firstName: command not found
+```
+
+We should take care of where a *space* may appear. For example our variable value may contains *space*:
 
 ```bash
 fullName=Remisa Yousefvand
@@ -156,7 +165,17 @@ echo "$a $b$c"
 
 The whitespace between `$a` and `$b` is the whitespace between `Hello` and `world` in the output.
 
-If we want to assign a variable if and only if it has no value currently, then we can use `assign if empty` | `variable default value` snippet:
+If you need adding more characters between variables then use `"${syntax}"` (or use this syntax as default which is recommended by many sources):
+
+```bash
+a="abc"
+b="def"
+c="ghi"
+echo "${a}a ${b}b${c}c"
+# abca defbghic
+```
+
+If we want to assign a variable if and only if it has no value currently, then we can use [default value](#default-value) snippet:
 
 ```bash
 #!/usr/bin/env bash
@@ -164,7 +183,7 @@ If we want to assign a variable if and only if it has no value currently, then w
 : "${variable:=default}"
 ```
 
-In above example `variable` is set only if it is *empty*.
+In above example `variable` is set only if it is *empty*. We will use this snippet later after [argument parsing](#argument-parsing) to assign default values to variables when they are not passed (optional parameters) to script.
 
 ## Variable Types
 
@@ -174,15 +193,15 @@ Bash supports **`String`**, **`Integer`** and **`Array`**. Most of the time you 
 # Number or Sting:
 var1=1234
 var2=12.56
-var3="some text"
+var3="some text" # use double quote when there is a space in string
 
 # Array:
-myArray=('one' 'two' 'three')
+myArray=("one" "two" "three")
 # or
 myArray2=(
-  'four'
-  'five'
-  'six'
+  "four"
+  "five"
+  "six"
 )
 
 echo "$var1"          # 1234
@@ -194,7 +213,7 @@ echo "${myArray2[@]}" # four five six
 
 ## Function
 
-Functions in shell scripts are not what you expect from a function in other languages. They are like commands defined in your script just like `echo` and `ls`. To define a function named `my func` simply:
+Function in shell script is not what you expect from a function in other languages. They are like commands defined in your script just like `echo` and `ls`. To define a function named `my func` simply (there is a `func` snippet for that):
 
 ```bash
 #!/usr/bin/env bash
@@ -212,17 +231,17 @@ myfunc () {
 }
 ```
 
-To access function arguments we use `$1`, `$2`, ... or access all of them at once through an array:
+To access function arguments we use `$1`, `$2`, `$3`... or access all of them at once through an array:
 
 ```bash
 #!/usr/bin/env bash
 function myfunc () {
   arguments=("$@")
-  # arguments is the array variable
+  # arguments is the array variable containing all function parameters
 }
 ```
 
-If you need to return some value from a function use `echo`. There is a `return` keyword in bash but you cannot use it for returning values from functions most of the time (unless your function return an integer between 0 and 255) also it has its own meaning (0 for success and 1-255 for error codes). If you want to terminate a function execution at some point use `return`:
+If you need to return some value from a function use `echo`. There is a `return` keyword in bash but you cannot use it for returning values from functions most of the time (unless your function return an integer between 0 and 255) also it has its own meaning (0 for success and 1-255 for error codes). If you want to terminate a function execution at some point use `return` (for example inside an `if` statement).
 
 ```bash
 #!/usr/bin/env bash
@@ -254,7 +273,7 @@ It is common practice to store the output of commands inside variables for furth
 1. `` output=`command` ``
 2. `output=$(command)`
 
-In some references method two is recommended specially for nested command substitutions but for the sake of brevity and consistency, we will use method one (backtick) in this book unless we need nested command substitutions.
+In most references method two is recommended specially for nested command substitutions but for the sake of brevity and consistency, we will use method one (backtick) in this book unless we need nested command substitutions.
 
 To store results of `ls` command in a variable named `output`:
 
@@ -265,7 +284,7 @@ output=`ls` # store ls results in a variable named output
 echo "$output" # print output value (ls result)
 ```
 
-There is a more advance technique for using a command output as another command input, namely **piping (|)**, which is beyond the scope of this book.
+There is a more advance technique for using a command output as another command input, namely **piping (|)**, which is beyond the scope of this book (if you have `functional programming` background you are already familiar with the idea).
 
 ### Command success/failure check
 
@@ -310,6 +329,23 @@ if [[ $? == 0 ]]; then
 fi
 ```
 
+Check command exit code **immediately** after that command or you may get wrong result:
+
+```bash
+#!/usr/bin/env bash
+
+touch /not_enough_permission_to_create_file
+
+echo "checking operation..."
+
+# check last command (echo) success/failure
+if [[ $? != 0 ]]; then
+  echo "command failed"
+fi
+```
+
+In above example your `if` statement won't print the `command failed` message since last command is `echo` and not `touch`.
+
 ## Exit
 
 It is a good practice to inform script caller (in case other scripts use yours) about success or failure of your script. To indicate success:
@@ -324,9 +360,9 @@ And if an error happens use an exit code. Document exit codes at the top of of y
 exit 5 # documented as "no internet connection"
 ```
 
-## Argument parsing
+## Argument parsing {#argument-parsing}
 
-By convention most Linux commands/programs supports a long and short version for the same flag/switch. Short version is usually the first letter of the long version. Some examples:
+By convention most Linux commands/programs supports a long and short version for the same flag/switch. Short version is usually the first letter of the long version (unless it is taken, like adding `version` to following list). Some examples:
 
 {width="narrow"}
 | short |    long   |
@@ -354,7 +390,7 @@ In above code we are telling the script to save the output in `~/my_backups`[^fn
 
 T> ### Flag vs Switch
 T>
-T> **Flag** is used for boolean values and its presence means **True** while **Switch** accepts an argument.
+T> **Flag** is used for boolean values and its presence means **True** while **Switch** accepts argument(s).
 
 **Shellman** has a `parse args` snippet. It looks like this:
 
@@ -388,7 +424,7 @@ The `while loop` keeps looping until there is no more arguments to process. Alth
 
 Input arguments are `-m --name Remisa`. After a `shift` they become `--name Remisa` and so on. So if you need to process a switch with two arguments `shift 3`.
 
-This snippet will take care of **Flags** and **Switches** of your script. For implementing your own flag(s) replace `-f|--flag` with desired flag, i.e. `-v|--verbose` and on the next lines (before `shift`) do whatever you need. It is recommended to define a variable and set it here to keep track of the flag:
+This snippet will take care of **Flags** and **Switches** of your script. For implementing your own flag(s) replace `-f|--flag` with desired flag, i.e. `-v|--verbose` and on the next lines (before `shift`) do whatever you need. It is recommended to define a variable and set it here to keep track of the flag or store the value of switch parameter(s):
 
 ```bash
 -v|--verbose)
@@ -404,7 +440,7 @@ To implement a **switch** like `-o`/`--output`:
 output_path=$2
 ```
 
-In above example we are saving the switch value in `output_path` for using later.
+In above example we are saving the switch value in `output_path` for using later. We refer to first switch parameter with `$2` and the second with `$3` and so on because the `$1` refers to the switch itself. Then `shift` properly.
 
 Repeat above procedure for more switches.
 
@@ -451,9 +487,10 @@ An organized script is easy to understand and maintain. Recommended structure of
 5. animation frames `region` (if any, see `animation` namespace)
 6. functions `region`
 7. command parsing
-8. rest of code (minimize it to function calls)
+8. setting default variable values
+9. rest of code (minimize it to function calls)
 
-Usually you only need *1, 2, 6, 8* from above list.
+Usually you only need *1, 2, 6, 9* from above list. *command parsing* and *setting default variable values* can be done in reverse order. In that case create a `variables` [region](#region) after [summary](#summary) and set default values. Later if argument parsing overrides some of your variables (passed as flag/switch) the rest of variables contain default values.
 
 In *summary* you provide some information about `script`.
 
@@ -465,9 +502,17 @@ In *summary* you provide some information about `script`.
 # Author:        Remisa <remisa.yousefvand@gmail.com>
 # Date:          2019-01-06
 # Version:       1.0.0
+
+# Exit codes
+# ==========
+# 0   no error
+# 1   script interrupted
+# 2   error description
 ```
 
-If you need to run a set of specific tasks before your script exits or in case user terminates your script (using `CTRL+C`) you need to assign a `handler` function to appropriate event. The problem with event handlers is we use functions to run if a certain event happens so before assigning an event to a function we need to write the function. To capture events as soon as possible we need to assign event handlers early in our script. Thats why I have serrated functions into two parts, event handlers, at top o the script just before binding events to them and the rest of functions which are not needed so early. See [event](#event-snippets)
+## Event handling
+
+If you need to run a set of specific tasks before your script exits or in case user terminates your script (using `CTRL+C`) you need to assign a `handler` function to appropriate event. The problem with event handlers is we use functions to run if a certain event happens so before assigning an event to a function we need to write the function. To capture events as soon as possible we need to assign event handlers early in our script. Thats why I have separated functions into two parts, event handlers, at the top of the script just before binding events to them and the rest of functions which are not needed so early. See [event](#event-snippets)
 
 Use `region` snippet to define a `functions` region and put all of your functions there. Remember you need to define functions before you can use them. If function `B` calls function `A`, then function `A` definition should precede definition of function `B`.
 
@@ -494,7 +539,9 @@ Use *double quotation* where you have a variable that contains *whitespace*. Any
 
 ```bash
 var1="Hello World!"
-echo "$var1" # Hello World!
+echo "$var1"   # Hello World!
+# OR
+echo "${var1}" # Hello World!
 ```
 
 T> ### Double Quote
@@ -514,12 +561,16 @@ var3='"&$*'
 echo "$var3" # "&$*
 ```
 
-Use *backtick* for [command substitution](#command-substitution)
+*backtick* is used for [command substitution](#command-substitution)
 
 ```bash
 directoryList=`ls | xargs echo`
 echo "$directoryList"
 ```
+
+## Sample scripts
+
+Apart from some examples in this book there is a [samples directory](https://github.com/yousefvand/shellman/tree/master/samples) in project repository which contains the steps and reasoning behind writing some shell scripts using `Shellman`. I'm gonna update it once a while.
 
 [^fn1]: In *Linux* unlike *Windows*, file extensions has no special meaning to *operating system* but still you can use them to remember which file type you are dealing with. **vscode** uses file extensions to recognize file types (`.sh` for *Shellscript*)
 
@@ -527,4 +578,4 @@ echo "$directoryList"
 
 [^fn3]: This number is between 0 and 255 (one byte). If you have ever programmed in `C/C++`, you may noticed a `return 0` as a default behavior, that is the code your program is returning to *OS*, here `0` as success.
 
-[^fn4]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`. This path is also accessible through `$HOME` global variable.
+[^fn4]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`. This path is also accessible via `$HOME` global variable.

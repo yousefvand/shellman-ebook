@@ -2,7 +2,20 @@
 
 Contains `String` related operations.
 
-### contains
+### string concat
+
+concatenates two strings
+
+```bash
+#!/usr/bin/env bash
+
+str1="a"
+str2="b"
+str="${str1}y${str2}z"
+echo "$str" # aybz
+```
+
+### string contains | if string contains
 
 Checks if a `String` contains another `String` (substring).
 
@@ -18,7 +31,7 @@ else
 fi
 ```
 
-### equal
+### string equal | if string =
 
 Checks if two `String`s are the same.
 
@@ -33,31 +46,7 @@ if [ "$string1" = "$string2" ]; then
 fi
 ```
 
-### indexOf
-
-Returns index of substring inside a string.
-
-```bash
-#!/usr/bin/env bash
-
-myString="Hello World!"
-temp=${myString%%"or"*} && indexOf=`echo ${myString%%"or"*} | echo ${#temp}`
-echo $indexOf # 7
-```
-
-### length
-
-Returns *length* of given string.
-
-```bash
-#!/usr/bin/env bash
-
-var="abcdefg"
-length=${#var}
-echo "$length"
-```
-
-### not equal
+### string not equal | if string !=
 
 Checks if two strings are not equal.
 
@@ -71,7 +60,59 @@ if [ "$str1" != "$str2" ]; then
 fi
 ```
 
-### replace
+### string indexOf
+
+Returns index of substring inside a string.
+
+```bash
+#!/usr/bin/env bash
+
+myString="Hello World!"
+temp=${myString%%"or"*} && indexOf=`echo ${myString%%"or"*} | echo ${#temp}`
+echo $indexOf # 7
+```
+
+### if string empty
+
+Check if variable is an empty string.
+
+```bash
+#!/usr/bin/env bash
+
+var=""
+if [ -z "$var" ]; then
+  echo "Variable is empty string."
+fi
+# Variable is empty string.
+```
+
+### if string not empty
+
+Check if variable is not an empty string.
+
+```bash
+#!/usr/bin/env bash
+
+var="something"
+if [ -n "$var" ]; then
+  echo "Variable is not an empty string."
+fi
+# Variable is not an empty string.
+```
+
+### string length
+
+Returns *length* of given string.
+
+```bash
+#!/usr/bin/env bash
+
+var="abcdefg"
+length=${#var}
+echo "$length"
+```
+
+### string replace
 
 Replace a substring with given string in another string.
 
@@ -83,7 +124,7 @@ replaced=`echo -e "${str1}" | sed -e 's/World/Everyone/g'`
 echo "$replaced" # Hello Everyone!
 ```
 
-### reverse
+### string reverse
 
 Reverse given string.
 
@@ -95,7 +136,7 @@ reversed=`echo -e "${str1}" | rev`
 echo "$reversed" # dcba
 ```
 
-### substring
+### string substring
 
 Returns a substring from given string starting at *index* and with the length of *length*.
 
@@ -109,7 +150,18 @@ echo "$substring" # cde
 
 In above example we want a substring starting at *index* 2 to the *length* of 3. In `abcdefg` index 2 is `c` (index starts at zero) and length of 3 will end up `cde`.
 
-### toLower
+### string substring count | string substring frequency
+
+Finds the frequency of a substring in a string (may need character escaping).
+
+```bash
+#!/usr/bin/env bash
+
+frequency=`sed -E 's/(.)/\1\n/g' <<<"a!bc!def!" | grep -c "!"`
+echo "${frequency}" # 3
+```
+
+### string toLower
 
 Returns lowercase of given string.
 
@@ -121,7 +173,7 @@ toLower=`echo -e "${str1}" | tr '[:upper:]' '[:lower:]'`
 echo "$toLower" # abcde
 ```
 
-### toUpper
+### string toUpper
 
 Returns uppercase of given string.
 
@@ -133,7 +185,7 @@ toLower=`echo -e "${str1}" | tr '[:upper:]' '[:lower:]'`
 echo "$toLower" # abcde
 ```
 
-### trim
+### string trim
 
 Removes leading and trailing whitespace(s).
 
@@ -146,7 +198,7 @@ echo "Variable $result contains no leading and trailing space as you see"
 # Variable result contains no leading and trailing space as you see
 ```
 
-### trim all
+### string trim all
 
 Removes all whitespace(s) from given string (leading, inside, trailing).
 
@@ -159,7 +211,7 @@ echo "All whitespaces are removed from $result as you see"
 # All whitespaces are removed from abcde as you see
 ```
 
-### trim left
+### string trim left
 
 Removes all whitespace(s) from left of given string (leading).
 
@@ -172,7 +224,7 @@ echo "There is no $result as you see"
 # There is no whitespace on left as you see
 ```
 
-### trim right
+### string trim right
 
 Removes all whitespace(s) from right of given string (trailing).
 

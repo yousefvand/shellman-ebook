@@ -1,6 +1,6 @@
 ## file
 
-Contains `File` related operations.
+Contains `File` related operations. For logical operations about `file` like if a given file is writable see [logic](#logic) section.
 
 ### file delete | file remove
 
@@ -21,13 +21,13 @@ Find files or directories based on criteria in given path.
 ```bash
 #!/usr/bin/env bash
 
-result=`find ~ -maxdepth 3 -type f -name "*.txt"`
+result=`find ~ -maxdepth 5 -type f -name "*.txt"`
 echo "$result"
 ```
 
-In above example all files (`-type f`) with `txt` extension in *home* (`~`) path up to `3` level of depth will be found. To search for directories use `-type d`.
+In above example all files (`-type f`) with `txt` extension in *home* (`~`) path up to `5` level of depth will be found. To search for directories use `-type d`.
 
-### file search
+### file search | search in files | find in files
 
 Find files which contain the search criteria.
 
@@ -70,7 +70,7 @@ done
 
 In above example we store result of `docker images` command in `lines` variable then send `sample header` text to `test.txt` file in *home* (`~`) directory. Inside `for` loop we send each line of lines to `test.txt`.
 
-Operator `>` redirects output to a file and overwrite its content while operator `>>` will append to the contents of the file.
+Operator `>` redirects output to a file and overwrite its content while operator `>>` will append to the end of the file (previous contents remain there).
 
 ### file write multiline
 

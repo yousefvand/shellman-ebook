@@ -8,12 +8,14 @@ Install `git`:
   - `sudo apt install git`
 - Red Hat-based linux systems
   - `sudo yum install git`
+- Archlinux
+  - `sudo pacman -S git`
 - Mac
   - `brew install git`
 - Windows
   - Download from <https://gitforwindows.org/>
 
-### clone
+### git clone
 
 Clone a repository to local machine.
 
@@ -24,7 +26,7 @@ git clone https://github.com/user/repository.git
 cd repository
 ```
 
-### clone branch
+### git clone branch
 
 Clone a repository to local machine and switch to a specific branch.
 
@@ -35,7 +37,7 @@ git clone -b develop https://github.com/user/repository.git
 cd repository
 ```
 
-### config list
+### git config list
 
 List git configurations.
 
@@ -45,7 +47,7 @@ List git configurations.
 git config --list
 ```
 
-### config set
+### git config set
 
 Set a *git* configuration.
 
@@ -55,7 +57,7 @@ Set a *git* configuration.
 git config --global user.name "Remisa"
 ```
 
-### commit
+### git commit
 
 Commit changes.
 
@@ -65,7 +67,7 @@ Commit changes.
 git commit -m "fixed typo"
 ```
 
-### commit search
+### git commit search
 
 Search for a commit which contains searchCriteria.
 
@@ -75,7 +77,7 @@ Search for a commit which contains searchCriteria.
 git log --all --grep='typo'
 ```
 
-### commit undo
+### git commit undo
 
 Undo last N commits. **soft** preserve local changes. **hard** delete local changes.
 
@@ -85,7 +87,7 @@ Undo last N commits. **soft** preserve local changes. **hard** delete local chan
 git reset --soft HEAD~1 # undo last local change but don't delete them
 ```
 
-### commit list notPushed
+### git commit list notPushed
 
 List non pushed commits.
 
@@ -95,7 +97,7 @@ List non pushed commits.
 git log origin/master..HEAD
 ```
 
-### branch create
+### git branch create
 
 Create a local branch and switch into it.
 
@@ -105,7 +107,7 @@ Create a local branch and switch into it.
 git checkout -b develop
 ```
 
-### branch list
+### git branch list
 
 List all branches.
 
@@ -115,7 +117,7 @@ List all branches.
 git branch
 ```
 
-### branch push
+### git branch push
 
 Push branch to remote.
 
@@ -125,7 +127,7 @@ Push branch to remote.
 git push origin develop
 ```
 
-### branch rename
+### git branch rename
 
 Rename current branch.
 
@@ -135,7 +137,7 @@ Rename current branch.
 git branch -m newName
 ```
 
-### branch delete local
+### git branch delete local
 
 Delete local branch.
 
@@ -145,7 +147,7 @@ Delete local branch.
 git branch --delete localBranch
 ```
 
-### branch delete remote
+### git branch delete remote
 
 Delete remote branch.
 
@@ -155,7 +157,7 @@ Delete remote branch.
 git push origin --delete remoteBranch
 ```
 
-### changes revert
+### git changes revert
 
 Revert tracked changes.
 
@@ -165,7 +167,7 @@ Revert tracked changes.
 git checkout .
 ```
 
-### patch create
+### git patch create
 
 Create a patch from changes.
 
@@ -175,7 +177,7 @@ Create a patch from changes.
 git diff > patch1.patch
 ```
 
-### patch apply
+### git patch apply
 
 Apply a patch from file.
 
@@ -185,7 +187,7 @@ Apply a patch from file.
 git apply < patch1.patch
 ```
 
-### remote list
+### git remote list
 
 List all remotes.
 
@@ -195,7 +197,7 @@ List all remotes.
 git remote
 ```
 
-### remote urlAdd
+### git remote urlAdd
 
 Add remote url.
 
@@ -205,7 +207,7 @@ Add remote url.
 git remote add origin https://github.com/user/repository.git
 ```
 
-### remote urlChange
+### git remote urlChange
 
 Change remote url.
 
@@ -215,7 +217,7 @@ Change remote url.
 git remote set-url origin https://github.com/user/repository.git
 ```
 
-### tag list
+### git tag list
 
 List all tags.
 
@@ -225,7 +227,7 @@ List all tags.
 git tag
 ```
 
-### tag commit
+### git tag commit
 
 Tag a commit.
 
@@ -235,7 +237,7 @@ Tag a commit.
 git tag -a release/1.0.0 -m "1.0.0 release"
 ```
 
-### tag remote delete
+### git tag remote delete
 
 Delete tag from remote.
 
@@ -245,7 +247,7 @@ Delete tag from remote.
 git push --delete origin tagName && git push origin :tagName
 ```
 
-### tag remote push
+### git tag remote push
 
 Push tag to remote.
 

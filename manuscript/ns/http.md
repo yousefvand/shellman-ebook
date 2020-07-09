@@ -2,7 +2,7 @@
 
 Contains `HTTP` related operations.
 
-### GET
+### http GET
 
 Send a *GET* request to specified *URL*.
 
@@ -16,7 +16,7 @@ curl --request GET -sL \
 
 Above example sends a *HTTP GET* request to <http://example.com> with desire [User Agent](https://en.wikipedia.org/wiki/User_agent).
 
-### DELETE
+### http DELETE
 
 Send a *DELETE* request to specified *URL*.
 
@@ -28,7 +28,7 @@ curl --request DELETE -sL \
   --url 'http://example.com'
 ```
 
-### POST
+### http POST
 
 Send a *POST* request to specified *URL*.
 
@@ -42,7 +42,7 @@ curl --request POST -sL \
   --data 'key2=value2'
 ```
 
-### POST file
+### http POST file
 
 Send file with *http POST*.
 
@@ -58,7 +58,7 @@ curl --request POST -sL \
 
 Above example sends `image.jpg` to <http://example.com> via *POST* method.
 
-### header
+### http header
 
 Send http request with custom header(s).
 
@@ -71,7 +71,7 @@ curl --request GET -sL \
   --url 'http://example.com'
 ```
 
-### cookie
+### http cookie
 
 Send http request with desired cookies.
 
@@ -84,7 +84,7 @@ curl --request GET -sL \
   --url 'http://example.com'
 ```
 
-### download
+### http download
 
 Download from url and save to desired *path*.
 

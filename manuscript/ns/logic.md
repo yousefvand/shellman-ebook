@@ -1,4 +1,4 @@
-## logic
+## logic {#logic}
 
 You can find logical related commands here under `if` namespace.
 
@@ -122,140 +122,6 @@ For string comparison use `[ ]`.
 var="hi"
 [ "$var" = "bye" ] || echo "hi"
 # hi
-```
-
-### if directory exists
-
-Check if given *path* is a *directory*.
-
-```bash
-#!/usr/bin/env bash
-
-if [ -d ~/backup ]; then
-  echo "backup exists"
-fi
-```
-
-### if cmd exists
-
-Read [cmd](#cmd-exist)
-
-### if exists
-
-If *path* is a *file* or *directory*
-
-```bash
-#!/usr/bin/env bash
-
-path=~/.bashrc
-if [ -e "$path" ]; then
-  echo exists
-fi
-```
-
-### if file =
-
-Check if two files are equal.
-
-```bash
-#!/usr/bin/env bash
-
-file1=~/some_file
-file2=~/another_file
-
-if [ "$file1" -ef "$file2" ]; then
-  echo files are equal
-fi
-```
-
-### if file executable
-
-Check if file is executable.
-
-```bash
-#!/usr/bin/env bash
-
-if [ -x /bin/ls ]; then
-  echo file is executable
-fi
-```
-
-### if file link
-
-If given *path* is a *symbolic link*.
-
-```bash
-#!/usr/bin/env bash
-
-if [ -h /vmlinuz ]; then
-  echo symbolic link
-fi
-```
-
-### if file newer
-
-Check if first file is newer than the second.
-
-```bash
-#!/usr/bin/env bash
-
-file1=~/.bashrc
-file2=~/.profile
-
-if [ "$file1" -nt "$file2" ]; then
-  echo file1 is newer than file2
-fi
-```
-
-### if file not empty
-
-Check if file is not empty.
-
-```bash
-#!/usr/bin/env bash
-
-if [ -s ~/.profile ]; then
-  echo file not empty
-fi
-```
-
-### if file older
-
-Check if first file is older than the second.
-
-```bash
-#!/usr/bin/env bash
-
-file1=~/.bashrc
-file2=~/.profile
-
-if [ "$file1" -ot "$file2" ]; then
-  echo file1 is older than file2
-fi
-```
-
-### if file readable
-
-Check if file is readable.
-
-```bash
-#!/usr/bin/env bash
-
-if [ -r ~/.profile ]; then
-  echo file is readable
-fi
-```
-
-### if file writable
-
-Check if file is writable.
-
-```bash
-#!/usr/bin/env bash
-
-if [ -w ~/.profile ]; then
-  echo file is writable
-fi
 ```
 
 ### if int =
@@ -419,4 +285,152 @@ if [[ "$str" = *world* ]]; then
   echo contains world
 fi
 # contains world
+```
+
+### if directory exists
+
+Check if given *path* is a *directory*.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -d ~/backup ]; then
+  echo "backup exists"
+fi
+```
+
+### if cmd exists
+
+Read [cmd](#cmd-exist)
+
+### if exists
+
+If *path* exists.
+
+```bash
+#!/usr/bin/env bash
+
+path=~/.bashrc
+if [ -e "$path" ]; then
+  echo exists
+fi
+```
+
+### if file exists
+
+If given *file* exists.
+
+```bash
+#!/usr/bin/env bash
+
+filepath="/path/to/file"
+
+file if [ -f "$filepath" ]; then
+  echo file exists
+fi
+```
+
+### if file =
+
+Check if two files are equal.
+
+```bash
+#!/usr/bin/env bash
+
+file1=~/some_file
+file2=~/another_file
+
+if [ "$file1" -ef "$file2" ]; then
+  echo files are equal
+fi
+```
+
+### if file executable
+
+Check if file is executable.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -x /bin/ls ]; then
+  echo file is executable
+fi
+```
+
+### if file link
+
+If given *path* is a *symbolic link*.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -h /vmlinuz ]; then
+  echo symbolic link
+fi
+```
+
+### if file newer
+
+Check if first file is newer than the second.
+
+```bash
+#!/usr/bin/env bash
+
+file1=~/.bashrc
+file2=~/.profile
+
+if [ "$file1" -nt "$file2" ]; then
+  echo file1 is newer than file2
+fi
+```
+
+### if file not empty
+
+Check if file is not empty (file size > 0).
+
+```bash
+#!/usr/bin/env bash
+
+if [ -s ~/.profile ]; then
+  echo file not empty
+fi
+```
+
+### if file older
+
+Check if first file is older than the second.
+
+```bash
+#!/usr/bin/env bash
+
+file1=~/.bashrc
+file2=~/.profile
+
+if [ "$file1" -ot "$file2" ]; then
+  echo file1 is older than file2
+fi
+```
+
+### if file readable
+
+Check if file is readable.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -r ~/.profile ]; then
+  echo file is readable
+fi
+```
+
+### if file writable
+
+Check if file is writable.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -w ~/.profile ]; then
+  echo file is writable
+fi
 ```

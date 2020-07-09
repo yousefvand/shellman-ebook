@@ -1,6 +1,6 @@
-## lib
+## lib {#lib-fn-fx}
 
-Contains a set ol library functions and calling them under `fn / fx` namespaces. Functions can be accessed through `fn...` and their usage through `fx...`
+Contains a set of library functions under `fn / fx` namespaces. Functions can be accessed through `fn...` and their usage through `fx...`
 
 ### Math
 
@@ -71,6 +71,16 @@ var1=2; var2=3; var3=4
 result=`average $var1 $var2 $var3`
 echo $result
 ```
+
+### Animation
+
+There are three related snippets in `animation` namespace:
+
+- `animation frame`: Use to define a frame of your animation.
+- `fn animation animate`: A function used to animate frames.
+- `fx animation animate`: Calling `animate` function.
+
+See [animation](#animation-snippets) for more information.
 
 ### Misc
 
@@ -182,4 +192,38 @@ scan tcp localhost 5000 10000
 
 # tcp 8081 => open
 # tcp 9000 => open
+```
+
+### version compare | semver compare
+
+There are different versioning standards out there but they are converging to a specific one called [semver](https://semver.org) over the last years. If you need to compare two different version strings which comply with `semver` semantic standard, then there is a ready to use function for it as `fn version compare` | `fn semver compare`. Insert the function into your function [region](#region):
+
+```bash
+#!/usr/bin/env bash
+
+# Usage: version_compare "1.2.3" "1.1.7"
+
+function version_compare () {
+  # function body omitted...
+}
+```
+
+Later call the function according to usage or use `fx version compare` | `fx semver compare` snippet:
+
+```bash
+version_compare "major.minor.patch" "major.minor.patch"
+```
+
+`version_compare` function returns `>`, `<` or `=` as result. Here are some real example usage and the outputs:
+
+```bash
+version_compare "1.2.3" "1.1.7" # >
+version_compare "1.1.1" "2.1.0" # <
+version_compare "5.0.2" "5.0.2" # =
+```
+
+If the two version strings are not standard `semver`, `version_compare` function will compare each part (separated by `.`) until the shorter one reaches its end. If until that point both versions look like same it returns `=` as result:
+
+```bash
+version_compare "3.2.2.7" "3.2.2" # =
 ```

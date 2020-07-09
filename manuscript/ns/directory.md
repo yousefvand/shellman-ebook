@@ -1,8 +1,8 @@
 ## directory
 
-Contains `String` related operations.
+Contains `directory` related operations. For logical operations about `directory` like if a given directory exists see [logic](#logic) section.
 
-### create
+### directory create
 
 Creates a directory.
 
@@ -12,7 +12,7 @@ mkdir "test dir"
 
 Creates `test` directory at the current path.
 
-### create nested
+### directory create nested
 
 Create directories as required.
 
@@ -49,15 +49,27 @@ Directory structure should look like:
 
 For the answer refer to [Solutions](#solutions) section, [nested directories](#nested_directories).
 
-### find
+### directory delete nested | directory remove nested
+
+Delete directory and all contents. **Use with caution**.
+
+```bash
+#!/usr/bin/env bash
+
+rm -rf /home/remisa/backups
+```
+
+In above example `backups` directory and all contents (files and directories) will be deleted from */home/remisa* path (home directory for user `remisa`).
+
+### directory find | file find
 
 Find files or directories based on *criteria* in the given path up to N level depth.
 
 ```bash
 #!/usr/bin/env bash
 
-result=`find . -maxdepth 3 -type f -name "*.txt"`
+result=`find . -maxdepth 3 -type d -name "backup*"`
 echo "$result"
 ```
 
-Above example finds all files (`-type f`) up to `3` level depth (`-maxdepth 3`) in the current directory (`.`).
+Above example finds all directories (`-type d`) up to `3` level depth (`-maxdepth 3`) in the current directory (`.`) where their names start with `backup` (`-name "backup*"`).  To search for files use `-type f`.

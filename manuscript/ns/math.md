@@ -2,9 +2,9 @@
 
 Contains `Math` related operations. Math functions are available under `fn math ...` namespace.
 
-### reminder %
+### math % (modulus)
 
-Given two numbers, returns reminder of dividing the first number to the second number.
+Given two variables, returns reminder of dividing the first variable to the second.
 
 ```bash
 #!/usr/bin/env bash
@@ -15,9 +15,22 @@ reminder=$((var1 % var2))
 echo "$reminder" # 2
 ```
 
-### multiply *
+### math %= (modulus assign)
 
-Given two numbers, returns product of them.
+Given two variables, calculates reminder of dividing the first variable to the second and assigns the result to the first variable.
+
+```bash
+#!/usr/bin/env bash
+
+var1=13
+var2=5
+((var1 %= var2))
+echo "$var1" # 3
+```
+
+### math * (multiply)
+
+Given two variables, returns product of them.
 
 ```bash
 #!/usr/bin/env bash
@@ -28,15 +41,28 @@ result=$((var1 * var2))
 echo "$result" # 12
 ```
 
+### math *= (multiply assign)
+
+Given two variables, calculates product of them and assigns the result to the first variable.
+
+```bash
+#!/usr/bin/env bash
+
+var1=2
+var2=3
+((var1 *= var2))
+echo "$var1" # 6
+```
+
 X> ## Factorial
 X>
 X> Write a function which gets a number `N` and prints `N!`.
 
 For the answer refer to [Solutions](#solutions) section, [factorial](#factorial).
 
-### add +
+### math + (add)
 
-Given two numbers, returns sum of them.
+Given two variables, returns sum of them.
 
 ```bash
 #!/usr/bin/env bash
@@ -47,9 +73,9 @@ result=$((var1 + var2))
 echo "$result" # 5
 ```
 
-### increase ++
+### math ++ (increase)
 
-Given a number, adds one to it.
+Given a variables, adds one to it.
 
 ```bash
 #!/usr/bin/env bash
@@ -58,9 +84,22 @@ var=7
 echo $((++var)) # 8
 ```
 
-### subtract -
+### math += (add assign)
 
-Given two numbers, returns subtract of the second from the first.
+Given two variables, calculates sum of them and assigns the result to the first variable.
+
+```bash
+#!/usr/bin/env bash
+
+var1=2
+var2=3
+((var1 += var2))
+echo "$var1" # 5
+```
+
+### math - (subtract)
+
+Given two variables, returns subtract of the second from the first.
 
 ```bash
 #!/usr/bin/env bash
@@ -71,9 +110,9 @@ result=$((var1 - var2))
 echo "$result" # 2
 ```
 
-### decrease --
+### math -- (decrease)
 
-Given a number, subtracts one from it.
+Given a variable, subtracts one from it.
 
 ```bash
 #!/usr/bin/env bash
@@ -82,9 +121,22 @@ var=8
 echo $((--var)) # 7
 ```
 
-### divide /
+### math -= (subtract assign)
 
-Given two numbers, returns first divided by the second.
+Given two variables, calculates first variable minus the second and assigns the result to the first variable.
+
+```bash
+#!/usr/bin/env bash
+
+var1=19
+var2=15
+((var1 -= var2))
+echo "$var1" # 4
+```
+
+### math / (divide)
+
+Given two variables, returns first divided by the second.
 
 ```bash
 #!/usr/bin/env bash
@@ -95,7 +147,20 @@ result=$((var1 / var2))
 echo "$result" # 3
 ```
 
-### scale 0.00
+### math /= (divide assign)
+
+Given two variables, divides first variable by second and assigns the result to the first.
+
+```bash
+#!/usr/bin/env bash
+
+var1=12
+var2=4
+((var1 /= var2))
+echo "$var1" # 3
+```
+
+### math 0.00 (precision)
 
 Math operations with `x` decimal point precision.
 
@@ -121,7 +186,7 @@ result=`echo "scale=2;($var1 / $var2)" | bc`
 echo "$result" # 3.50
 ```
 
-### exponentiation ^
+### math ^ (power)
 
 Exponentiate *base* to the *power*.
 
@@ -132,7 +197,7 @@ echo $((2 ** 4)) # 16
 echo $((3 ** 3)) # 27
 ```
 
-### square root
+### math √ (square root)
 
 Returns square root of given number up to given *precision*.
 
@@ -146,7 +211,7 @@ result=`echo "scale=7;sqrt($var)" | bc`
 echo "$result" # 1.4142135
 ```
 
-### random
+### math random
 
 Generate random number between *min* and *max*
 
@@ -156,6 +221,12 @@ Generate random number between *min* and *max*
 echo $((5000 + RANDOM % $((65535-5000)))) # 27502
 ```
 
-### constants
+### math constants
 
 Some useful math constants.
+
+- π = 3.14159265358979323846264338327950288
+- e = 2.71828182845904523536028747135266249
+- 𝛾 = 0.57721566490153286060651209008240243
+- Ω = 0.56714329040978387299996866221035554
+- ϕ = 1.61803398874989484820458683436563811

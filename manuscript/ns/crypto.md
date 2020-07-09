@@ -2,7 +2,7 @@
 
 Contains `Cryptography` related operations like encryption, decryption and hashing.
 
-### base64 encode
+### crypto base64 encode
 
 Encode variable content into *base64*.
 
@@ -16,7 +16,7 @@ T> This encoding is used to transform *binary* data into *string* usually to sav
 base64Encoded=`echo -n "$variableToEncode" | base64`
 ```
 
-### base64 decode
+### crypto base64 decode
 
 Decode `String` from *base64* into `Binary`.
 
@@ -26,7 +26,7 @@ Decode `String` from *base64* into `Binary`.
 base64Decoded=`echo -n "$variableToDecode" | base64 -d`
 ```
 
-### hash
+### crypto hash
 
 Hash variable content with desired algorithm.
 

@@ -2,7 +2,7 @@
 
 Contains `Time` related operations.
 
-### now local
+### time now local
 
 Current local time.
 
@@ -16,7 +16,7 @@ timeNowLocal=`date +%r` # %r for 12 hrs
 echo "$timeNowLocal" # 01:23:45
 ```
 
-### now UTC
+### time now UTC
 
 Current UTC time.
 
@@ -27,7 +27,7 @@ timeNowUTC=`date -u +%R`
 echo "$timeNowUTC" # 12:56
 ```
 
-### seconds epoch
+### time seconds epoch
 
 Seconds from 01-01-1970 00:00.
 

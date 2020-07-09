@@ -4,7 +4,7 @@ Write text in italic, bold, dim or reverse contrast.
 
 ![formated text](images/format.png)
 
-### bold
+### format bold
 
 Write in **bold**.
 
@@ -14,7 +14,7 @@ Write in **bold**.
 echo `tput bold`bold text`tput sgr0`
 ```
 
-### italic
+### format italic
 
 Write in *italic*.
 
@@ -24,7 +24,7 @@ Write in *italic*.
 echo `tput sitm`italic text`tput sgr0`
 ```
 
-### dim
+### format dim
 
 Write dim text.
 
@@ -34,7 +34,7 @@ Write dim text.
 echo `tput dim`dimmed text`tput sgr0`
 ```
 
-### reverse
+### format reverse
 
 Write text in reverse contrast.
 

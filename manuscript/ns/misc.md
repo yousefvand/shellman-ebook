@@ -27,6 +27,40 @@ esac
 
 In above example we are deciding on the value of `var` which here is 2. If `var` is 2 or 3 the second case will be triggered. If none of cases (1, 2 or 3) are triggered, `*` means default and that will be triggered. change `var` to 5 and output will be `default action`.
 
+### region {#region}
+
+Creates a region to separate different parts of *script*.
+
+```bash
+#!/usr/bin/env bash
+
+# >>>>>>>>>>>>>>>>>>>>>>>> variables >>>>>>>>>>>>>>>>>>>>>>>>
+var=1
+# <<<<<<<<<<<<<<<<<<<<<<<< variables <<<<<<<<<<<<<<<<<<<<<<<<
+```
+
+### summary {#summary}
+
+Creates a commented summary for shell script. Use it at the top of your script.
+
+```bash
+#!/usr/bin/env bash
+
+# Title:         title
+# Description:   description
+# Author:        author <email>
+# Date:          yyyy-mm-dd
+# Version:       1.0.0
+
+# Exit codes
+# ==========
+# 0   no error
+# 1   script interrupted
+# 2   error description
+```
+
+Document your script error codes under `Exit codes` section. These are code you have used in script when it exits due to an error (i.e. `exit 5` for lack of permission to do the job).
+
 ### let
 
 `let` is used for mathematic operations.
@@ -44,16 +78,20 @@ let "a = 2 * 3"
 echo $a # 6
 ```
 
-### region
+### assign if empty | variable default value {#default-value}
 
-Create a region to separate different parts of *script*.
+Assigns a value to a variable if and only if the variable is empty. Useful for assigning default values.
 
 ```bash
 #!/usr/bin/env bash
 
-# >>>>>>>>>>>>>>>>>>>>>>>> variables >>>>>>>>>>>>>>>>>>>>>>>>
-var=1
-# <<<<<<<<<<<<<<<<<<<<<<<< variables <<<<<<<<<<<<<<<<<<<<<<<<
+var=""
+: "${var:=default}"
+echo "$var" # default
+
+var="something"
+: "${var:=default}"
+echo "$var" # something
 ```
 
 ### expr
@@ -98,50 +136,9 @@ timeout 5 curl -s http://example.com
 echo "at most 5 seconds later"
 ```
 
-### ips
-
-Array of local IPs.
-
-```bash
-#!/usr/bin/env bash
-
-IPS=`hostname -I`
-echo "$IPS"
-```
-
-### ip info
-
-public ip information (ip, city, region, country, location, postal code, organization).
-
-```bash
-#!/usr/bin/env bash
-
-echo `curl -s ipinfo.io/country`
-# U.K
-```
-
-### ip public
-
-Find public ip address via different services.
-
-- bot.whatismyipaddress.com
-- ident.me
-- ipecho.net/plain
-- icanhazip.com
-- ifconfig.me
-- api.ipify.org
-- ipinfo.io/ip
-
-```bash
-#!/usr/bin/env bash
-
-PUBLIC_IP=`curl -s api.ipify.org`
-echo "$PUBLIC_IP"
-```
-
 ### service manager
 
-Commands related to *services*. A *service* is a program which runs in background.
+Commands related to *services*. A *service* is a program which runs in background and doesn't need any user to login to be started (i.e. `ssh`).
 
 ```bash
 #!/usr/bin/env bash
@@ -162,7 +159,11 @@ sleep 2m
 
 ### stopwatch
 
-Use *stopwatch* to calculate script running time.
+Use *stopwatch* to calculate script running time. There are three snippets related to `stopwatch`, use at the given order:
+
+1. `stopwatch start`: Starts stopwatch.
+2. `stopwatch stop`: Stops stopwatch.
+3. `stopwatch elapsed`: Calculates total time.
 
 ```bash
 #!/usr/bin/env bash
