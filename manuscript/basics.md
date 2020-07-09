@@ -35,7 +35,7 @@ bash test.sh
 
 ## Run a Bash Script
 
-Bash script files by convention has **.sh** *file extension*[^fn1]. To run a bash script (`test.sh` for example) from terminal you have two options:
+Bash script files by convention has **.sh** *file extension*[^file-extension]. To run a bash script (`test.sh` for example) from terminal you have two options:
 
 - Run it with bash command (pass file path to bash):
   1. `bash test.sh`
@@ -54,7 +54,7 @@ To run a command from your script just write it in your script as you do in term
 rm some_file
 ```
 
-If the command needs **root**[^fn2] privileges (in *Windows* it is known as *Admin*), prefix the command with **sudo**:
+If the command needs **root**[^administrator] privileges (in *Windows* it is known as *Admin*), prefix the command with **sudo**:
 
 ```bash
 #!/usr/bin/env bash
@@ -288,7 +288,7 @@ There is a more advance technique for using a command output as another command 
 
 ### Command success/failure check
 
-It happens when you are interested to know if a previous command succeeded or failed. In Linux every program returns a number to *operating system* on exit[^fn3]. By convention if the return value is *zero*, in means no error happened and other values indicates command **failure** (1-255).
+It happens when you are interested to know if a previous command succeeded or failed. In Linux every program returns a number to *operating system* on exit[^exit-code]. By convention if the return value is *zero*, in means no error happened and other values indicates command **failure** (1-255).
 
 T> ### Command success/failure
 T>
@@ -386,7 +386,7 @@ If your script supports *switches*, it means user is passing some information to
 ./backup.sh -o ~/my_backups
 ```
 
-In above code we are telling the script to save the output in `~/my_backups`[^fn4] directory.
+In above code we are telling the script to save the output in `~/my_backups`[^home-directory] directory.
 
 T> ### Flag vs Switch
 T>
@@ -572,10 +572,10 @@ echo "$directoryList"
 
 Apart from some examples in this book there is a [samples directory](https://github.com/yousefvand/shellman/tree/master/samples) in project repository which contains the steps and reasoning behind writing some shell scripts using `Shellman`. I'm gonna update it once a while.
 
-[^fn1]: In *Linux* unlike *Windows*, file extensions has no special meaning to *operating system* but still you can use them to remember which file type you are dealing with. **vscode** uses file extensions to recognize file types (`.sh` for *Shellscript*)
+[^file-extension]: In *Linux* unlike *Windows*, file extensions has no special meaning to *operating system* but still you can use them to remember which file type you are dealing with. **vscode** uses file extensions to recognize file types (`.sh` for *Shellscript*)
 
-[^fn2]: In *Linux/Unix* systems, **root** is the most privileged user (same as *Administrator* in *Windows*).
+[^administrator]: In *Linux/Unix* systems, **root** is the most privileged user (same as *Administrator* in *Windows*).
 
-[^fn3]: This number is between 0 and 255 (one byte). If you have ever programmed in `C/C++`, you may noticed a `return 0` as a default behavior, that is the code your program is returning to *OS*, here `0` as success.
+[^exit-code]: This number is between 0 and 255 (one byte). If you have ever programmed in `C/C++`, you may noticed a `return 0` as a default behavior, that is the code your program is returning to *OS*, here `0` as success.
 
-[^fn4]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`. This path is also accessible via `$HOME` global variable.
+[^home-directory]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`. This path is also accessible via `$HOME` global variable.

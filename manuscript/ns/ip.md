@@ -1,4 +1,4 @@
-## IP
+## ip
 
 Contains `ip` related operations.
 
