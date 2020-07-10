@@ -526,7 +526,7 @@ In *summary* you provide some information about `script`.
 
 ## Event handling
 
-If you need to run a set of specific tasks before your script exits or in case user terminates your script (pressing `CTRL` + `C`) you need to assign a `handler` function to appropriate event. The problem with event handlers is we use functions to run if a certain event happens so before assigning an event to a function we need to write the function. To capture events as soon as possible we need to assign event handlers early in our script. Thats why I have separated functions into two parts, event handlers, at the top of the script just before binding events to them and the rest of functions which are not needed so early. See [event](#events) namespace for more information.
+If you need to run a set of specific tasks before your script exits or in case user terminates your script (pressing `CTRL` + `C`) you need to assign a `handler` function to appropriate event. The problem with event handlers is we use functions to run if a certain event happens so before assigning an event to a function we need to write the function. To capture events as soon as possible we need to assign event handlers early in our script. Thats why I have separated functions into two parts, event handlers, at the top of the script just before binding events to them and the rest of functions which are not needed so early. See [event](#event-snippets) namespace for more information.
 
 Use [region](#region) snippet to define a `functions` region and put all of your functions there. Remember you need to define functions before you can use them. If function `B` calls function `A`, then function `A` definition should precede definition of function `B`.
 

@@ -16,6 +16,7 @@ ns/date.md
 ns/time.md
 ns/file.md
 ns/directory.md
+ns/event.md
 ns/archive.md
 ns/http.md
 ns/ftp.md
@@ -26,4 +27,5 @@ ns/system.md
 ns/git.md
 ns/misc.md
 ns/lib.md
+ns/animation.md
 solutions.md

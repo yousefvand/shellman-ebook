@@ -1,4 +1,4 @@
-## event {#events}
+## event {#event-snippets}
 
 Contains `event` related operations available via **event** namespace. There are two events supported by `Shellman`. `EXIT` and `CTRL+C`. Be careful about registering events multiple times. The last one you register takes control of what happens when event happens. If you have multiple things to do, move them all to a single function and register that function once.
 
