@@ -4,7 +4,7 @@
 
 ![String Namespace](images/ns-string.png)
 
-When you press <kbd>Enter</kbd> on an item like above picture, vscode inserts some code into your script which you can move into different parts using <kbd>Tab</kbd> key. This is called `snippet`. To access a snippet you start typing and vscode shows a menu of snippets with matching prefixes.
+When you press `ENTER` on an item like above picture, vscode inserts some code into your script which you can move into different parts using `TAB` key. This is called `snippet`. To access a snippet you start typing and vscode shows a menu of snippets with matching prefixes.
 
 T> ### Snippet Alias
 T>

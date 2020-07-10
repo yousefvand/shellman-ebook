@@ -2,7 +2,7 @@
 
 # Solutions {#solutions}
 
-## Argument Parsing {#argument_parsing}
+## Argument Parsing {#argument-parsing}
 
 Contents of `greet.sh`:
 

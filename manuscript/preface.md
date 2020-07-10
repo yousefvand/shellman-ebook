@@ -8,10 +8,10 @@ When I started shell scripting, even with the best tools available I found it un
 
 The hard part of *shell scripting* is not *shell scripting* itself, it is understanding Linux and knowing the correct *command* and *switches*, so if you can do it in *terminal*, you can do it easily via shell script too. *Shell scripting* is useful for common tasks automation.
 
-This book is a guide for beginners who want to start shell scripting with **Shellman** effectively. If you are of pragmatic type people then go ahead and read [Basics](#basics) section and desired [namespaces](##namespaces).
+This book is a guide for beginners who want to start shell scripting with **Shellman** effectively. If you are of pragmatic type people then go ahead and read [Basics](#basics) section and desired [namespaces](##namespaces). Also the business model of **Shellman** is published on [medium](https://medium.com/@remisa.yousefvand/shellman-reborn-f2cc948ce3fc).
 
-Also the business model of **Shellman** is published on [medium](https://medium.com/@remisa.yousefvand/shellman-reborn-f2cc948ce3fc).
-  
+| |
+
 Remisa Yousefvand
 
 July 2020

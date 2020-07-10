@@ -1,4 +1,4 @@
-## event {#event-snippets}
+## event {#events}
 
 Contains `event` related operations available via **event** namespace. There are two events supported by `Shellman`. `EXIT` and `CTRL+C`. Be careful about registering events multiple times. The last one you register takes control of what happens when event happens. If you have multiple things to do, move them all to a single function and register that function once.
 
@@ -25,7 +25,7 @@ The `tput cnorm` part ensures we have a visible cursor when script exits. If you
 
 ### event CTRL+C | event terminated
 
-Available as `CTRL+C` | `terminated` under `event` namespace. If you need to do something in case your script gets interrupted (like when user presses <kbd>Ctrl</kbd> and <kbd>C</kbd> keys on keyboard) you can register a handler function for it:
+Available as `CTRL+C` | `terminated` under `event` namespace. If you need to do something in case your script gets interrupted (like when user presses `CTRL` and `C` keys on keyboard) you can register a handler function for it:
 
 ```bash
 # CTRL+C event handler
