@@ -1,6 +1,6 @@
 ## animation {#animation-snippets}
 
-Why on earth one may need `ASCII` animation in a shell script (you can use unicode as well but it may not work the same on all systems). If you are a girl you understand that!
+Why on earth one may need `ASCII` animation in a shell script (you can use unicode as well but it may not work the same on all systems). To add some fun!
 
 There are simple steps to make a beautiful animation with `Shellman`. You define `frames` and call `animate` function passing it the `frames` array and the interval between frames in seconds. Normally you need an animation at the end of your script, so `animate` function uses an infinite `while` loop of course with enough `sleep`s.
 

@@ -1,10 +1,10 @@
 ## event {#event-snippets}
 
-Contains `event` related operations available via **event** namespace. There are two events supported by `Shellman`. `EXIT` and `CTRL+C`. Be careful about registering events multiple times. The last one you register takes control of what happens when event happens. If you have multiple things to do, move them all to a single function and register that function once.
+Contains `event` related operations available via **event** namespace. There are two events supported by `Shellman`. `EXIT` and `CTRL+C`. Be careful about registering events multiple times. The last one you register takes control of what happens when event fires. If you have multiple things to do, move them all to a single function and register that function once.
 
 ### event EXIT
 
-If you need to run some commands before your script exits, you can put them in a function and call them everywhere your script may exits. But there is an easier way to do that. Register an `EXIT` handler function and it would be executed when your script execution is finished:
+If you need to run some commands before your script exits, you can put them in a function and call it everywhere your script may exits. But there is an easier way to do that. Register an `EXIT` handler function and it would be executed when your script execution is finished:
 
 ```bash
 # Exit event handler

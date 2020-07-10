@@ -3,7 +3,7 @@
 greeting="good night"
 name="everyone"
 
-# >>>>>>>>>>>>>>>>>>>>>>>> Shellman snippet >>>>>>>>>>>>>>>>>>>>>>>>
+# >>>>>>>>>>>>>>>>>>>>>>>> Argument parsing >>>>>>>>>>>>>>>>>>>>>>>>
 
 POSITIONAL=()
 while [[ $# > 0 ]]; do
@@ -25,6 +25,6 @@ done
 
 set -- "${POSITIONAL[@]}" # restore positional params
 
-# <<<<<<<<<<<<<<<<<<<<<<<< Shellman snippet <<<<<<<<<<<<<<<<<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<< Argument parsing <<<<<<<<<<<<<<<<<<<<<<<<
 
 echo "$greeting $name"

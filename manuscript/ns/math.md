@@ -99,7 +99,7 @@ echo "$var1" # 5
 
 ### math - (subtract)
 
-Given two variables, returns subtract of the second from the first.
+Given two variables, returns first minus second.
 
 ```bash
 #!/usr/bin/env bash
