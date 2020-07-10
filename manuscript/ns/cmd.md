@@ -1,4 +1,4 @@
-## cmd
+## cmd {#cmd-snippets}
 
 Contains `command` execution related operations.
 

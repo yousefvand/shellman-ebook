@@ -25,7 +25,7 @@ The `tput cnorm` part ensures we have a visible cursor when script exits. If you
 
 ### event CTRL+C | event terminated
 
-Available as `CTRL+C` | `terminated` under `event` namespace. If you need to do something in case your script gets interrupted (like when user presses `CTRL` and `C` on keyboard) you can register a handler function for it:
+Available as `CTRL+C` | `terminated` under `event` namespace. If you need to do something in case your script gets interrupted (like when user presses <kbd>Ctrl</kbd> and <kbd>C</kbd> keys on keyboard) you can register a handler function for it:
 
 ```bash
 # CTRL+C event handler

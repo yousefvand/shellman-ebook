@@ -4,7 +4,7 @@
 
 ## Comments
 
-In shell scripts comments start with  `#`. The exception is [shebang](#shebang) which you see as the first line of scripts.
+In shell scripts, comments start with  `#`. The exception is [shebang](#shebang) which you see as the first line of scripts.
 
 ```bash
 # This is a comment
@@ -51,7 +51,7 @@ To run a command from your script just write it in your script as you do in term
 ```bash
 #!/usr/bin/env bash
 
-rm some_file
+rm some-file
 ```
 
 If the command needs **root**[^administrator] privileges (in *Windows* it is known as *Admin*), prefix the command with **sudo**:
@@ -59,7 +59,7 @@ If the command needs **root**[^administrator] privileges (in *Windows* it is kno
 ```bash
 #!/usr/bin/env bash
 
-sudo rm some_file
+sudo rm some-file
 ```
 
 If you need the result of the executed command refer to [command substitution](#command-substitution).
@@ -120,6 +120,18 @@ T> ### Variable Access Rule
 T>
 T> To access a variable value prefix it with `$`
 
+Variables are case sensitive (like Linux filesystem):
+
+```bash
+#!/usr/bin/env bash
+
+var=1
+Var=2
+
+echo "$var" # 1
+echo "$Var" # 2
+```
+
 As you may guessed in assignment rule, *space* has a special meaning in *shell scripting*. With *space* over `=` shell assumes variable is a command and `=` and variable value are parameters to that command.
 
 ```bash
@@ -165,14 +177,14 @@ echo "$a $b$c"
 
 The whitespace between `$a` and `$b` is the whitespace between `Hello` and `world` in the output.
 
-If you need adding more characters between variables then use `"${syntax}"` (or use this syntax as default which is recommended by many sources):
+If you need adding more characters between variables then use `"${variable}"` syntax (this syntax is recommended by many sources as the default syntax):
 
 ```bash
 a="abc"
 b="def"
 c="ghi"
-echo "${a}a ${b}b${c}c"
-# abca defbghic
+echo "${a}a ${b}b ${c}c"
+# abca defb ghic
 ```
 
 If we want to assign a variable if and only if it has no value currently, then we can use [default value](#default-value) snippet:
@@ -213,7 +225,7 @@ echo "${myArray2[@]}" # four five six
 
 ## Function
 
-Function in shell script is not what you expect from a function in other languages. They are like commands defined in your script just like `echo` and `ls`. To define a function named `my func` simply (there is a `func` snippet for that):
+Function in shell script is not what you expect from a function in other languages. They are like commands defined in your script just like `echo` and `ls`. To define a function named `myfunc` simply (there is a `func` snippet for that):
 
 ```bash
 #!/usr/bin/env bash
@@ -247,7 +259,7 @@ If you need to return some value from a function use `echo`. There is a `return`
 #!/usr/bin/env bash
 function myfunc () {
   echo "this is the result"
-  # we don't need "return" here because function already reached its end
+  # we don't need "return" here because function already reaches its end
 }
 ```
 
@@ -273,7 +285,7 @@ It is common practice to store the output of commands inside variables for furth
 1. `` output=`command` ``
 2. `output=$(command)`
 
-In most references method two is recommended specially for nested command substitutions but for the sake of brevity and consistency, we will use method one (backtick) in this book unless we need nested command substitutions.
+In most references method two is recommended because it is the only one that works with nested command substitutions. For the sake of brevity and consistency, we will use method one (backtick) in this book unless we need nested command substitutions (Also to be able to read and understand shell scripts written by others).
 
 To store results of `ls` command in a variable named `output`:
 
@@ -288,29 +300,31 @@ There is a more advance technique for using a command output as another command 
 
 ### Command success/failure check
 
-It happens when you are interested to know if a previous command succeeded or failed. In Linux every program returns a number to *operating system* on exit[^exit-code]. By convention if the return value is *zero*, in means no error happened and other values indicates command **failure** (1-255).
+It happens when you are interested to know if a previous command succeeded or failed. In Linux every program returns a number to *operating system* on exit[^exit-code]. If the return value is *zero*, in means no error happened and other values indicates command **failure** (1-255).
 
 T> ### Command success/failure
 T>
-T> Programs return `0` in case of **success** and non zero if **failure** happens.
+T> Programs return `0` in case of **success** and non zero if **failure** occurs.
 
-To check that, you can check *last command return value* by reading `$?` value. There is a snippet at `func` [namespace](#namespaces) for retrieving last command return value as `func ret val`:
+To check that, you can read *last command return value* via `$?`. There is a snippet at `func` [namespace](#namespaces) for retrieving last command return value as `func ret val`:
 
 ```bash
 echo "$?"
 ```
 
- **Shellman** supports checking **failure** of last command via `cmd` [namespace](#namespaces) as `cmd failure check` snippet:
+ **Shellman** supports checking **failure** of last command via [cmd namespace](#cmd-snippets) as `cmd failure check` snippet:
 
 ```bash
 # following command will fail due to lack of permission
-touch /not_enough_permission_to_create_file
+touch /not-enough-permission-to-create-file
 ```
 
-`touch` command creates an empty file. Here we are trying to create the empty file `not_enough_permission_to_create_file` at the root of your file system (`/`). Without **sudo** normally (unless user is `root`) this command will fail due to lack of enough permissions.
+`touch` command creates an empty file.
+
+We are trying to create the empty file `not-enough-permission-to-create-file` at the root of your file system (`/`). Without **sudo** normally (unless user is `root`) this command will fail due to lack of enough permissions.
 
 ```bash
-touch /not_enough_permission_to_create_file
+touch /not-enough-permission-to-create-file
 
 # check last command (touch) success/failure
 if [[ $? != 0 ]]; then
@@ -318,7 +332,7 @@ if [[ $? != 0 ]]; then
 fi
 ```
 
-To check **success**, use `cmd success check` snippet from `cmd` namespace:
+To check **success**, use `cmd success check` snippet from [cmd namespace](#cmd-snippets):
 
 ```bash
 echo "Hello World!"
@@ -329,12 +343,12 @@ if [[ $? == 0 ]]; then
 fi
 ```
 
-Check command exit code **immediately** after that command or you may get wrong result:
+Check *command exit code* **immediately** after that command or you may get wrong result:
 
 ```bash
 #!/usr/bin/env bash
 
-touch /not_enough_permission_to_create_file
+touch /not-enough-permission-to-create-file
 
 echo "checking operation..."
 
@@ -386,7 +400,7 @@ If your script supports *switches*, it means user is passing some information to
 ./backup.sh -o ~/my_backups
 ```
 
-In above code we are telling the script to save the output in `~/my_backups`[^home-directory] directory.
+In above code we are telling the script to save the output in `~/my_backups`[^home-directory] directory. Here `-o` is a *switch* which takes one parameter (a path).
 
 T> ### Flag vs Switch
 T>
@@ -416,7 +430,7 @@ done
 set -- "${POSITIONAL[@]}" # restore positional params
 ```
 
-The `while loop` keeps looping until there is no more arguments to process. Although passed arguments to your script would not disappear themselves we trim them from left using `shift` command. So if your script is executed like:
+The *while loop* keeps looping until there is no more arguments to process. Although the passed arguments to your script would not disappear themselves, we trim them from left using `shift` command. So if your script is executed like:
 
 ```bash
 ./greet.sh -m --name Remisa
@@ -437,10 +451,10 @@ To implement a **switch** like `-o`/`--output`:
 
 ```bash
 -o|--output)
-output_path=$2
+outputPath=$2
 ```
 
-In above example we are saving the switch value in `output_path` for using later. We refer to first switch parameter with `$2` and the second with `$3` and so on because the `$1` refers to the switch itself. Then `shift` properly.
+In above example we are saving the switch value in `outputPath` for using later. We refer to first switch parameter with `$2` and the second with `$3` and so on because the `$1` refers to the switch itself. Then `shift` properly.
 
 Repeat above procedure for more switches.
 
@@ -468,7 +482,7 @@ X> Write a shell script to greet. Script receives the name via `--name` or `-n` 
 # good morning Remisa
 ```
 
-For the answer refer to [Solutions](#solutions) section, [argument parsing](#argument_parsing).
+For the answer check [solutions](#argument_parsing) section.
 
 As you have noticed, first argument can be accessed via `$1`, second argument via `$2`...
 
@@ -512,9 +526,9 @@ In *summary* you provide some information about `script`.
 
 ## Event handling
 
-If you need to run a set of specific tasks before your script exits or in case user terminates your script (using `CTRL+C`) you need to assign a `handler` function to appropriate event. The problem with event handlers is we use functions to run if a certain event happens so before assigning an event to a function we need to write the function. To capture events as soon as possible we need to assign event handlers early in our script. Thats why I have separated functions into two parts, event handlers, at the top of the script just before binding events to them and the rest of functions which are not needed so early. See [event](#event-snippets)
+If you need to run a set of specific tasks before your script exits or in case user terminates your script (pressing <kbd>Ctrl</kbd> + <kbd>C</kbd>) you need to assign a `handler` function to appropriate event. The problem with event handlers is we use functions to run if a certain event happens so before assigning an event to a function we need to write the function. To capture events as soon as possible we need to assign event handlers early in our script. Thats why I have separated functions into two parts, event handlers, at the top of the script just before binding events to them and the rest of functions which are not needed so early. See [event](#event-snippets) namespace for more information.
 
-Use `region` snippet to define a `functions` region and put all of your functions there. Remember you need to define functions before you can use them. If function `B` calls function `A`, then function `A` definition should precede definition of function `B`.
+Use [region](#region) snippet to define a `functions` region and put all of your functions there. Remember you need to define functions before you can use them. If function `B` calls function `A`, then function `A` definition should precede definition of function `B`.
 
 ```bash
 #!/usr/bin/env bash
@@ -570,7 +584,7 @@ echo "$directoryList"
 
 ## Sample scripts
 
-Apart from some examples in this book there is a [samples directory](https://github.com/yousefvand/shellman/tree/master/samples) in project repository which contains the steps and reasoning behind writing some shell scripts using `Shellman`. I'm gonna update it once a while.
+Apart from some examples in this book there is a [samples directory](https://github.com/yousefvand/shellman/tree/master/samples) in project repository which contains the steps and reasoning behind writing some shell scripts using `Shellman`.
 
 [^file-extension]: In *Linux* unlike *Windows*, file extensions has no special meaning to *operating system* but still you can use them to remember which file type you are dealing with. **vscode** uses file extensions to recognize file types (`.sh` for *Shellscript*)
 

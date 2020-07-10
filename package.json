@@ -11,9 +11,16 @@
     "type": "git",
     "url": "git+https://github.com/yousefvand/shellman-ebook.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "shell",
+    "Linux",
+    "shellscript",
+    "programming",
+    "bash",
+    "ebook"
+  ],
+  "author": "Remisa Yousefvand <remisa.yousefvand@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/yousefvand/shellman-ebook/issues"
   },
