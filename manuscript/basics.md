@@ -306,7 +306,7 @@ T> ### Command success/failure
 T>
 T> Programs return `0` in case of **success** and non zero if **failure** occurs.
 
-To check that, you can read *last command return value* via `$?`. There is a snippet at `func` [namespace](#namespaces) for retrieving last command return value as `func ret val`:
+To check that, you can read *last command return value* via `$?`. There is a snippet at [func namespace](#function-snippets) for retrieving last command return value as `func ret val`:
 
 ```bash
 echo "$?"
@@ -358,7 +358,7 @@ if [[ $? != 0 ]]; then
 fi
 ```
 
-In above example your `if` statement won't print the `command failed` message since last command is `echo` and not `touch`.
+In above example your **`if`** statement won't print the `command failed` message since last command is `echo` and not `touch`.
 
 ## Exit
 
@@ -496,15 +496,15 @@ An organized script is easy to understand and maintain. Recommended structure of
 
 1. shebang (`shebang` | `bash` snippet)
 2. summary (`summary` snippet)
-3. handler functions `region` (if any, see `event` namespace)
-4. event handlers `region` (if any, see `event` namespace)
-5. animation frames `region` (if any, see `animation` namespace)
+3. handler functions `region` (if any, see [event](#event-snippets) namespace)
+4. event handlers `region` (if any, see [event](#event-snippets) namespace)
+5. animation frames `region` (if any, see [animation](#animation-snippets) namespace)
 6. functions `region`
-7. command parsing
+7. argument parsing
 8. setting default variable values
 9. rest of code (minimize it to function calls)
 
-Usually you only need *1, 2, 6, 9* from above list. *command parsing* and *setting default variable values* can be done in reverse order. In that case create a `variables` [region](#region) after [summary](#summary) and set default values. Later if argument parsing overrides some of your variables (passed as flag/switch) the rest of variables contain default values.
+Usually you only need *1, 2, 6, 9* from above list. *argument parsing* and *setting default variable values* can be done in reverse order. In that case create a `variables` [region](#region) after [summary](#summary) and set default values. Later if argument parsing overrides some of your variables (passed as flag/switch) the rest of variables contain default values.
 
 In *summary* you provide some information about `script`.
 
