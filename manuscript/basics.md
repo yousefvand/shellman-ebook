@@ -12,7 +12,7 @@ In shell scripts, comments start with  `#`. The exception is [shebang](#shebang)
 
 ## shebang {#shebang}
 
-This is the first line of any bash script. You may see different versions of it:
+This is the first line of most of shell scripts. You may see different versions of it:
 
 - `#!/usr/bin/sh`
 - `#!/usr/bin/bash`
@@ -33,9 +33,9 @@ If a shell script doesn't contain `shebang` then whoever gonna execute such an s
 bash test.sh
 ```
 
-## Run a Bash Script
+## Run a Shell Script
 
-Bash script files by convention has **.sh** *file extension*[^file-extension]. To run a bash script (`test.sh` for example) from terminal you have two options:
+Shell script files by convention has **.sh** *file extension*[^file-extension]. To run a shell script (`test.sh` for example) from terminal you have two options:
 
 - Run it with bash command (pass file path to bash):
   1. `bash test.sh`
@@ -199,7 +199,7 @@ In above example `variable` is set only if it is *empty*. We will use this snipp
 
 ## Variable Types
 
-Bash supports **`String`**, **`Integer`** and **`Array`**. Most of the time you only need **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations, and return `String` back to you. Although you can define variables using `declare` keyword, in this book we define variables literally.
+There are three variable types in shell scripting: **`String`**, **`Integer`** and **`Array`**. Most of the time you only need **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations, and return `String` back to you. Although you can define variables using `declare` keyword, in this book we define variables literally.
 
 ```bash
 # Number or Sting:
@@ -490,7 +490,7 @@ And yes, `$0` refers to script name itself at the time of execution.
 
 Same is true inside the body of a function to access passed arguments to the function.
 
-## Organizing your Bash Script
+## Organizing your Shell Script
 
 An organized script is easy to understand and maintain. Recommended structure of `script.sh` from top to bottom is:
 

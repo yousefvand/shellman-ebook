@@ -34,6 +34,17 @@ done
 # start
 ```
 
+Also `loop infinite` snippet is available:
+
+```bash
+#!/usr/bin/env bash
+
+while true; do
+  echo "message every 2 seconds"
+  sleep 2s
+done
+```
+
 ### until
 
 `until` condition (opposite of `while`).

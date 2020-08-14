@@ -122,7 +122,7 @@ banner_color yellow "sample banner"
 
 #### import
 
-Use functions defined in other bash script files inside your script. To define the function use `fn import` at the top of script so later it can be called via `fx import`. Default folder for library files is `lib` relative to calling script.
+Use functions defined in other shell script files inside your script. To define the function use `fn import` at the top of script so later it can be called via `fx import`. Default folder for library files is `lib` relative to calling script.
 
 ```bash
 #!/usr/bin/env bash
