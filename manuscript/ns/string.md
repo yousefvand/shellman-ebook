@@ -102,7 +102,7 @@ fi
 
 ### string length
 
-Returns *length* of given string.
+Returns _length_ of given string.
 
 ```bash
 #!/usr/bin/env bash
@@ -111,6 +111,17 @@ var="abcdefg"
 length=${#var}
 echo "$length"
 ```
+
+### string randomization
+
+Generates a random string from specified characters with desired length.
+
+```bash
+randomString=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 16 ; echo '')
+echo "$randomString"
+```
+
+In above example random string is built up from characters `A-Z`, `a-z` and `0-9` and length of it would be 16 characters.
 
 ### string replace
 
@@ -138,7 +149,7 @@ echo "$reversed" # dcba
 
 ### string substring
 
-Returns a substring from given string starting at *index* and with the length of *length*.
+Returns a substring from given string starting at _index_ and with the length of _length_.
 
 ```bash
 #!/usr/bin/env bash
@@ -148,7 +159,7 @@ substring=`echo -e "${str1:2:3}"`
 echo "$substring" # cde
 ```
 
-In above example we want a substring starting at *index* 2 to the *length* of 3. In `abcdefg` index 2 is `c` (index starts at zero) and length of 3 will end up `cde`.
+In above example we want a substring starting at _index_ 2 to the _length_ of 3. In `abcdefg` index 2 is `c` (index starts at zero) and length of 3 will end up `cde`.
 
 ### string substring count | string substring frequency
 

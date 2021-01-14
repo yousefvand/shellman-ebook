@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/yousefvand/shellman-ebook#readme",
   "devDependencies": {
-    "cspell": "^4.1.0"
+    "cspell": "^5.1.3"
   }
 }
