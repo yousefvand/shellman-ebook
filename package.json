@@ -1,11 +1,10 @@
 {
   "name": "shellman-ebook",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Learn how to write professional shell scripts easily using [Shellman](https://marketplace.visualstudio.com/items?itemName=Remisa.shellman) snippet in  [vscode](https://code.visualstudio.com/).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "spellcheck": "./node_modules/.bin/cspell ./**/*"
+    "spellcheck": "npx cspell ./**/*"
   },
   "repository": {
     "type": "git",
@@ -26,6 +25,6 @@
   },
   "homepage": "https://github.com/yousefvand/shellman-ebook#readme",
   "devDependencies": {
-    "cspell": "^5.1.3"
+    "cspell": "^5.2.4"
   }
 }

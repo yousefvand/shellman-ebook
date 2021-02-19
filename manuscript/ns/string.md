@@ -112,7 +112,7 @@ length=${#var}
 echo "$length"
 ```
 
-### string randomization
+### string random
 
 Generates a random string from specified characters with desired length.
 

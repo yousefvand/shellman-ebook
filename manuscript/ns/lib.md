@@ -10,8 +10,6 @@ Math related functions.
 
 Calculates sum of given integers. Available as `fn math sum` snippet.
 
-Example usage:
-
 ```bash
 #!/usr/bin/env bash
 
@@ -32,8 +30,6 @@ echo $result
 
 Calculates product of given integers. Available as `fn math product` snippet.
 
-Example usage:
-
 ```bash
 #!/usr/bin/env bash
 
@@ -53,8 +49,6 @@ echo $result
 #### math average
 
 Calculates average of given integers. Available as `fn math average` snippet.
-
-Example usage:
 
 ```bash
 #!/usr/bin/env bash
@@ -204,7 +198,7 @@ There are different versioning standards out there but they are converging to a 
 # Usage: version_compare "1.2.3" "1.1.7"
 
 function version_compare () {
-  # function body omitted...
+  # function body ...
 }
 ```
 
@@ -227,3 +221,45 @@ If the two version strings are not standard `semver`, `version_compare` function
 ```bash
 version_compare "3.2.2.7" "3.2.2" # =
 ```
+
+### urlencode
+
+Encodes URL.
+
+```bash
+#!/usr/bin/env bash
+
+# Usage: urlencode url
+
+# Credit: https://unix.stackexchange.com/a/187256
+
+function urlencode () {
+  # function body ...
+}
+
+# Encode the URL
+urlencode "http://www.mysite.com/a file with spaces.html"
+
+# Output: http%3A%2F%2Fwww.mysite.com%2Fa%20file%20with%20spaces.html
+```
+
+### urldecode
+
+Decodes encoded URL.
+
+```bash
+#!/usr/bin/env bash
+
+# Usage: urldecode url
+
+# Credit: https://unix.stackexchange.com/a/187256
+function urldecode () {
+  # function body...
+}
+
+# Decode the URL
+urldecode "http%3A%2F%2Fwww.mysite.com%2Fa%20file%20with%20spaces.html"
+
+# Output: http://www.mysite.com/a file with spaces.html
+```
+
