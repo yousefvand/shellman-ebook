@@ -7,3 +7,5 @@
 - [Shellman](https://marketplace.visualstudio.com/items?itemName=Remisa.shellman) snippet
 
 ![shellman install](images/shellman-install.png)
+
+{pagebreak}

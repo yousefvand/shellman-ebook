@@ -8,12 +8,17 @@ When I started shell scripting, even with the best tools available I found it un
 
 The hard part of *shell scripting* is not *shell scripting* itself, it is understanding Linux and knowing the correct *command* and *switches*, so if you can do it in *terminal*, you can do it easily via shell script too. *Shell scripting* is useful for common tasks automation.
 
-This book is a guide for beginners who want to start shell scripting with **Shellman** effectively. If you are of pragmatic type people then go ahead and read [Basics](#basics) section and desired [namespaces](##namespaces). Also the business model of **Shellman** is published on [medium](https://medium.com/@remisa.yousefvand/shellman-reborn-f2cc948ce3fc).
+This book is a guide for beginners who want to start shell scripting with **Shellman** effectively. If you are of pragmatic type people then go ahead and read [Basics](#basics) section and desired [namespaces](##namespaces). Also the business model of **Shellman** is published on [medium](https://medium.com/@remisa.yousefvand/shellman-reborn-f2cc948ce3fc). If you have anyy idea orr issue you can contact me via: https://github.com/yousefvand/shellman-ebook/issues
 
 | |
 
 Remisa Yousefvand
 
-July 2020
+First edition
+
+June 2024
+
 
 [^prior]: From cognitive/statistical point of view, coming from `OOP`, or at least expecting order, you find `Shellman` convenient because its structure matches your beliefs (prior). The probability distribution curve has the same shape, so you learn fast (little update to your curve is needed). Your wishes about where to find a function just comes true.
+
+{pagebreak}

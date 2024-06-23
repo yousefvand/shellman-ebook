@@ -113,7 +113,7 @@ Now if we want to read our variable value and print in on screen with `echo` com
 firstName=Remisa
 echo $firstName
 # or
-echo ${firstName}
+echo ${firstName} # This syntax is encouraged
 ```
 
 T> ### Variable Access Rule
@@ -125,11 +125,11 @@ Variables are case sensitive (like Linux filesystem):
 ```bash
 #!/usr/bin/env bash
 
-var=1
-Var=2
+var=1 # small letter 'v'
+Var=2 # capital letter 'V'
 
-echo "$var" # 1
-echo "$Var" # 2
+echo "${var}" # 1
+echo "${Var}" # 2
 ```
 
 As you may guessed in assignment rule, *space* has a special meaning in *shell scripting*. With *space* over `=` shell assumes variable is a command and `=` and variable value are parameters to that command.
@@ -149,14 +149,14 @@ Now when we want to use `fullName` value we put a `$` before it and use `$fullNa
 
 ```bash
 fullName="Remisa Yousefvand"
-echo "$fullName"
+echo "${fullName}"
 ```
 
 Consider you want to delete a file named `some file.txt` and you have save its name in a variable like:
 
 ```bash
 fileName="some file.txt"
-rm $fileName
+rm ${fileName}
 ```
 
 With above script instead of deleting `some file.txt` you are telling `rm` to delete two files named `some` and `file.txt` and you will get an error (No such file or directory).
@@ -171,11 +171,11 @@ To concat multiple variables put them in `""` in desired order:
 a="Hello"
 b="world"
 c="!"
-echo "$a $b$c"
+echo "${a} ${b}${c}"
 # Hello world!
 ```
 
-The whitespace between `$a` and `$b` is the whitespace between `Hello` and `world` in the output.
+The whitespace between `${a}` and `${b}` is the whitespace between `Hello` and `world` in the output.
 
 If you need adding more characters between variables then use `"${variable}"` syntax (this syntax is recommended by many sources as the default syntax):
 
@@ -199,7 +199,7 @@ In above example `variable` is set only if it is *empty*. We will use this snipp
 
 ## Variable Types
 
-There are three variable types in shell scripting: **`String`**, **`Integer`** and **`Array`**. Most of the time you only need **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations, and return `String` back to you. Although you can define variables using `declare` keyword, in this book we define variables literally.
+There are three variable types in shell scripting: **`String`**, **`Integer`** and **`Array`**. Most of the time you only need **`String`**. Even when working with numbers they are strings you pass to commands which take care of converting those strings to numbers, do calculations, and return `String` back to you. Although you can define variables using `declare` keyword, in this book we define variables literally as this is practical.
 
 ```bash
 # Number or Sting:
@@ -216,9 +216,6 @@ myArray2=(
   "six"
 )
 
-echo "$var1"          # 1234
-echo "$var2"          # 12.56
-echo "$var3"          # some text
 echo "${myArray[@]}"  # one two three
 echo "${myArray2[@]}" # four five six
 ```
@@ -230,17 +227,21 @@ Function in shell script is not what you expect from a function in other languag
 ```bash
 #!/usr/bin/env bash
 function myfunc () {
-  echo "$1"
+  echo "${1}"
 }
+
+myfunc hello
 ```
 
-Function definition should precedes its usage. `function` keyword is optional and can be omitted:
+Function definition should precedes its usage. `function` keyword is optional and can be omitted but for the sake of readability use it:
 
 ```bash
 #!/usr/bin/env bash
 myfunc () {
-  echo "$1"
+  echo "${1} ${2}"
 }
+
+myfunc hello world
 ```
 
 To access function arguments we use `$1`, `$2`, `$3`... or access all of them at once through an array:
@@ -253,7 +254,7 @@ function myfunc () {
 }
 ```
 
-If you need to return some value from a function use `echo`. There is a `return` keyword in bash but you cannot use it for returning values from functions most of the time (unless your function return an integer between 0 and 255) also it has its own meaning (0 for success and 1-255 for error codes). If you want to terminate a function execution at some point use `return` (for example inside an `if` statement).
+If you need to `return` some value from a function use `echo`. There is a `return` keyword in bash but you cannot use it for returning values from functions most of the time (unless your function return an integer between 0 and 255) also it has its own meaning (0 for success and 1-255 for error codes). If you want to terminate a function execution at some point use `return` (for example inside an `if` statement).
 
 ```bash
 #!/usr/bin/env bash
@@ -285,13 +286,10 @@ It is common practice to store the output of commands inside variables for furth
 1. `` output=`command` ``
 2. `output=$(command)`
 
-In most references method two is recommended because it is the only one that works with nested command substitutions. For the sake of brevity and consistency, we will use method one (backtick) in this book unless we need nested command substitutions (Also to be able to read and understand shell scripts written by others).
-
 To store results of `ls` command in a variable named `output`:
 
 ```bash
-output=`ls` # store ls results in a variable named output
-# same as: output=$(ls)
+output=$(ls) # store ls results in a variable named output
 
 echo "$output" # print output value (ls result)
 ```
@@ -300,7 +298,7 @@ There is a more advance technique for using a command output as another command 
 
 ### Command success/failure check
 
-It happens when you are interested to know if a previous command succeeded or failed. In Linux every program returns a number to *operating system* on exit[^exit-code]. If the return value is *zero*, in means no error happened and other values indicates command **failure** (1-255).
+It happens when you are interested to know if a previous command succeeded or failed. In Linux every program returns a number to *operating system* on exit[^exit-code]. If the return value is *zero*, it means no error happened and other values indicates command **failure** (1-255 equal to one byte).
 
 T> ### Command success/failure
 T>
@@ -411,17 +409,17 @@ T> **Flag** is used for boolean values and its presence means **True** while **S
 ```bash
 POSITIONAL=()
 while [[ $# > 0 ]]; do # while arguments count > 0
-  case "$1" in
+  case "${1}" in
     -f|--flag)
-    echo flag: $1
+    echo flag: ${1}
     shift # shift once since flags have no values
     ;;
     -s|--switch)
-    echo switch $1 with value: $2
+    echo switch ${1} with value: ${2}
     shift 2 # shift twice to bypass switch and its value
     ;;
     *) # unknown flag/switch
-    POSITIONAL+=("$1")
+    POSITIONAL+=("${1}")
     shift
     ;;
   esac # end of case. "case" word in reverse!
@@ -451,7 +449,7 @@ To implement a **switch** like `-o`/`--output`:
 
 ```bash
 -o|--output)
-outputPath=$2
+outputPath=${2}
 ```
 
 In above example we are saving the switch value in `outputPath` for using later. We refer to first switch parameter with `$2` and the second with `$3` and so on because the `$1` refers to the switch itself. Then `shift` properly.
@@ -484,9 +482,9 @@ X> Write a shell script to greet. Script receives the name via `--name` or `-n` 
 
 For the answer check [solutions](#argument-parsing) section.
 
-As you have noticed, first argument can be accessed via `$1`, second argument via `$2`...
+As you have noticed, first argument can be accessed via `${1}`, second argument via `${2}`...
 
-And yes, `$0` refers to script name itself at the time of execution.
+And yes, `${0}` refers to script name itself at the time of execution.
 
 Same is true inside the body of a function to access passed arguments to the function.
 
@@ -539,7 +537,7 @@ Use [region](#region) snippet to define a `functions` region and put all of your
 
 function greet() {
   # access the argument via $1
-  echo "Hello $1"
+  echo "Hello ${1}"
 }
 
 # <<<<<<<<<<<<<<<<<<<<<<<< functions <<<<<<<<<<<<<<<<<<<<<<<<
@@ -553,8 +551,6 @@ Use *double quotation* where you have a variable that contains *whitespace*. Any
 
 ```bash
 var1="Hello World!"
-echo "$var1"   # Hello World!
-# OR
 echo "${var1}" # Hello World!
 ```
 
@@ -566,20 +562,18 @@ Use *single quotation* where you need to define a variable that contains special
 
 ```bash
 var1="Hello World!"
-echo "$var1" # Hello World!
+echo "$var{1}" # Hello World!
 
 var2='$var1'
-echo "$var2" # $var1
+echo "${var2}" # $var1
 
 var3='"&$*'
 echo "$var3" # "&$*
 ```
 
-*backtick* is used for [command substitution](#command-substitution)
-
 ```bash
-directoryList=`ls | xargs echo`
-echo "$directoryList"
+directoryList=$(ls | xargs echo)
+echo "${directoryList}"
 ```
 
 ## Sample scripts
