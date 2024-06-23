@@ -15,7 +15,6 @@ This book is a guide for beginners who want to start shell scripting with **Shel
 Remisa Yousefvand
 
 First edition
-
 June 2024
 
 

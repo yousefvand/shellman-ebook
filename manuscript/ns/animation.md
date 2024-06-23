@@ -47,6 +47,8 @@ IFS='' read -r -d '' frames[4] <<"EOF"
 \
 EOF
 
+Then it is time to insert `fx animation animate`. This function is responsible for animating the frames. It accepts time delay as seconds and animation mode. There are two animation modes: circular and pendular. In circular mode after last frame animation starts from first frame but in pendular mode after last frame animation rolls back.
+
 function animate () {
   local frames=("$@")
   ((last_index=${#frames[@]} - 1))

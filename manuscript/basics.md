@@ -587,3 +587,5 @@ Apart from some examples in this book there is a [samples directory](https://git
 [^exit-code]: This number is between 0 and 255 (one byte). If you have ever programmed in `C/C++`, you may noticed a `return 0` as a default behavior, that is the code your program is returning to *OS*, here `0` as success.
 
 [^home-directory]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`. This path is also accessible via `$HOME` global variable.
+
+To read global variables simply write: `echo $GLOBAL_VARIABLE`. One of the most famous global variables is **PATH**. It consist of many paths separated by `,`. When you run a command operating system searches these paths to find your command. If your command is not in those paths you need to enter the full path of your command.
