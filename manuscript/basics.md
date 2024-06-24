@@ -218,6 +218,8 @@ myArray2=(
 
 echo "${myArray[@]}"  # one two three
 echo "${myArray2[@]}" # four five six
+echo "${myArray[0]}"  # one
+echo "${myArray2[2]}" # six
 ```
 
 ## Function
@@ -230,7 +232,7 @@ function myfunc () {
   echo "${1}"
 }
 
-myfunc hello
+myfunc hello # hello
 ```
 
 Function definition should precedes its usage. `function` keyword is optional and can be omitted but for the sake of readability use it:
@@ -242,6 +244,8 @@ myfunc () {
 }
 
 myfunc hello world
+
+# hello world
 ```
 
 To access function arguments we use `$1`, `$2`, `$3`... or access all of them at once through an array:
@@ -250,7 +254,8 @@ To access function arguments we use `$1`, `$2`, `$3`... or access all of them at
 #!/usr/bin/env bash
 function myfunc () {
   arguments=("$@")
-  # arguments is the array variable containing all function parameters
+  # arguments is the array variable containing all function parameters.
+  # Use shift (we will talk about it later) to process all parameters.
 }
 ```
 
@@ -291,7 +296,7 @@ To store results of `ls` command in a variable named `output`:
 ```bash
 output=$(ls) # store ls results in a variable named output
 
-echo "$output" # print output value (ls result)
+echo "${output}" # print output value (ls result)
 ```
 
 There is a more advance technique for using a command output as another command input, namely **piping (|)**, which is beyond the scope of this book (if you have `functional programming` background you are already familiar with the idea).
@@ -588,4 +593,4 @@ Apart from some examples in this book there is a [samples directory](https://git
 
 [^home-directory]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`. This path is also accessible via `$HOME` global variable.
 
-To read global variables simply write: `echo $GLOBAL_VARIABLE`. One of the most famous global variables is **PATH**. It consist of many paths separated by `,`. When you run a command operating system searches these paths to find your command. If your command is not in those paths you need to enter the full path of your command.
+To read global variables simply write: `echo $GLOBAL_VARIABLE`. One of the most famous global variables is **PATH**. It consist of many paths separated by semicolon (`;`). When you run a command operating system searches these paths to find your command. If your command is not in those paths you need to enter the full path of your command.
