@@ -62,6 +62,10 @@ myArray=("Alice" "Bob" "Eve" "Shellman")
 echo ${myArray[2]} # Eve
 ```
 
+W> ## Warning
+W>
+W> Arrays start at zero index.
+
 ### array concat
 
 Returns an array made of concatenation of two given arrays.
@@ -84,7 +88,7 @@ Delete entire array.
 
 myArray=("Alice" "Bob" "Eve")
 unset myArray
-echo ${myArray[@]}
+echo "${myArray[@]}"
 #
 ```
 
@@ -109,14 +113,14 @@ Filter elements of an array based on given pattern.
 
 myArray=('Alice' '22' 'Bob' '16' 'Eve')
 filtered=(`for i in ${myArray[@]} ; do echo $i; done | grep [0-9]`)
-echo ${filtered[@]} # 22 16
+echo "${filtered[@]}" # 22 16
 ```
 
 ```bash
 #!/usr/bin/env bash
 
 myArray=("Alice" "Bob" "Eve")
-echo ${myArray[@]/e/} # Alice Eve
+echo ${myArray[@]/e/} # Alice Ev
 ```
 
 ### array iterate | array forEach
@@ -128,7 +132,7 @@ Iterate over array items.
 
 myArray=("Alice" "Bob" "Eve")
 
-for item in ${myArray[@]}; do
+for item in "${myArray[@]}"; do
   echo "$item"
 done
 
@@ -156,7 +160,7 @@ Find and replace items in array based on regex.
 #!/usr/bin/env bash
 
 myArray=("Alice" "Bob" "Eve")
-echo ${myArray[@]//e/9} # Alic9 Bob Ev9
+echo "${myArray[@]//e/9}" # Alic9 Bob Ev9
 ```
 
 ### array slice | array range
@@ -167,7 +171,7 @@ Return items from *index* up to the *count*.
 #!/usr/bin/env bash
 
 myArray=("Alice" "Bob" "Eve" "Shellman" "Remisa")
-echo ${myArray[@]:1:3} # Bob Eve Shellman
+echo "${myArray[@]:1:3}" # Bob Eve Shellman
 ```
 
 In above example we are interested in 3 items of array starting at index 1 (arrays are zero base indexed)
@@ -181,5 +185,36 @@ Set element given value as Nth element.
 
 myArray=("Alice" "Bob" "Eve")
 myArray[1]="Shellman"
-echo ${myArray[@]} # Alice Shellman Eve
+echo "${myArray[@]}" # Alice Shellman Eve
 ```
+
+### array contains
+
+Check if the array contains an element.
+
+```bash
+#!/usr/bin/env bash
+
+if [[ "${myArray[*]}" =~ 'Bob' ]]; then
+    echo 'array contains Bob'
+fi
+#array contains Bob
+```
+
+### array reverse
+
+Reverses order of array elements.
+
+```bash
+#!/usr/bin/env bash
+
+myArray=(1 2 3)
+
+for((i=${#myArray[@]}-1;i>=0;i--)); do
+    reversed+=("${myArray[i]}")
+done
+
+unset "myArray" # optional
+echo "${reversed[@]}" # 3 2 1
+```
+

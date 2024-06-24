@@ -1,3 +1,8 @@
+preface.md
+prerequisites.md
+structure.md
+basics.md
+namespaces.md
 ns/archive.md
 ns/array.md
 ns/command.md
@@ -23,9 +28,4 @@ ns/string.md
 ns/system.md
 ns/time.md
 ns/variable.md
-basics.md
-namespaces.md
-preface.md
-prerequisites.md
 solutions.md
-structure.md
