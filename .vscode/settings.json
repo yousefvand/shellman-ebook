@@ -43,6 +43,7 @@
     "multiline",
     "myfunc",
     "mylib",
+    "nofile",
     "pacman",
     "pagebreak",
     "pgrep",
