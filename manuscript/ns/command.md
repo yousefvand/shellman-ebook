@@ -2,7 +2,7 @@
 
 Contains `command` execution related operations.
 
-### cmd | command | Run | command substitution | cmd substitution
+### command substitution
 
 To run a command and use the returned value is named [command substitution](#command-substitution).
 
