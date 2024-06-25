@@ -13,7 +13,9 @@ T> This encoding is used to transform *binary* data into *string* usually to sav
 ```bash
 #!/usr/bin/env bash
 
-base64Encoded=`echo -n "$variableToEncode" | base64`
+base64Encoded=$(echo -n "Remisa Yousefvand" | base64)
+echo "${base64Encoded}"
+# UmVtaXNhIFlvdXNlZnZhbmQ=
 ```
 
 ### crypto base64 decode
@@ -23,7 +25,8 @@ Decode `String` from *base64* into `Binary`.
 ```bash
 #!/usr/bin/env bash
 
-base64Decoded=`echo -n "$variableToDecode" | base64 -d`
+base64Decoded=$(echo -n "UmVtaXNhIFlvdXNlZnZhbmQ=" | base64 -d)
+echo "${base64Decoded}" # Remisa Yousefvand
 ```
 
 ### crypto hash
@@ -46,3 +49,5 @@ Supported algorithms:
 - sha256
 - sha384
 - sha512
+
+use desired algorithm when pressing TAB at second place.
