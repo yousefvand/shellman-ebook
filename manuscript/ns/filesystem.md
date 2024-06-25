@@ -1,6 +1,128 @@
-## file
+## file and directories
 
-Contains `File` related operations. For logical operations about `file` like if a given file is writable see [logic](#logic) section.
+Contains `File` and `directory` related operations.
+
+### directory create
+
+Create an empty directory.
+
+```bash
+#!/usr/bin/env bash
+
+mkdir "directory name"
+```
+
+### if file exists
+
+Check if the file exists.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -f "/path/to/file" ]; then
+    echo "File \"/path/to/file\" exists"
+fi
+```
+
+### if file not empty
+
+Check if file size is greater than zero.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -s "/path/to/file" ]; then
+    echo "File \"/path/to/file\" is not empty"
+fi
+```
+
+### if file =
+
+Check if files are equal.
+
+```bash
+#!/usr/bin/env bash
+
+if cmp -s "/path/to/file1" "/path/to/file2"; then
+    echo "File \"/path/to/file1\" is equal to file \"/path/to/file2\""
+fi
+```
+
+### if file readable
+
+Check if file can be read.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -r "/path/to/file" ]; then
+    echo "File \"/path/to/file\" is readable"
+fi
+```
+
+### if file writeable
+
+if file is writeable.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -w "/path/to/file" ]; then
+    echo "File \"/path/to/file\" is writeable"
+fi
+```
+
+### if directory exists
+
+Check if a directory exists.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -d "/path/to/directory" ]; then
+    echo "directory \"/path/to/directory\" exists"
+fi
+```
+
+### iterate files
+
+Iterate files in a directory for a certain file (files).
+
+```bash
+#!/usr/bin/env bash
+
+# Searching in the current directory
+for file in *.{jpg,png}; do
+    echo "${file}"
+done
+```
+
+In this example we are looking for pictures with `jpg` and `png` pictures.
+
+### iterate directories
+
+Iterate around visible directories inside another directory.
+
+```bash
+#!/usr/bin/env bash
+
+# Make sure path ends with /
+for directory in /*; do
+    if [[ -d "${directory}" && ! -L "${directory}" ]]; then
+        echo "${directory}"
+    fi
+done
+```
+
+### directory create nested
+
+Create directories even they don't exist.
+
+```bash
+#!/usr/bin/env bash
+
+mkdir -p a/b/c
+```
 
 ### file delete | file remove
 
@@ -12,9 +134,29 @@ Delete given file.
 rm -f ~/test.txt
 ```
 
-In above example `test.txt` will be deleted from *home*.
+In above example `test.txt` will be deleted from *home*. Home is denoted by `~`.
 
-### file find
+### directory delete nested | directory remove nested
+
+Delete a directory and all subdirectory and files (use with caution).
+
+```bash
+rm -rf /path/to/directory
+```
+
+### if path exists
+
+If path exists (file, directory, link...)
+
+```bash
+#!/usr/bin/env bash
+
+if [ -e "/path/to/something" ]; then
+    echo "Path \"/path/to/something\" exists"
+fi
+```
+
+### find file | find directory
 
 Find files or directories based on criteria in given path.
 
@@ -102,6 +244,18 @@ second line
 EOL
 ```
 
+### if file executable
+
+Check if file is executable.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -x "/path/to/file" ]; then
+    echo "file \"/path/to/file\" is executable"
+fi
+```
+
 ### remove files older than
 
 Remove files older than x days.
@@ -113,3 +267,50 @@ find ~/backup -mtime +14 | xargs rm -f
 ```
 
 Above example removes files from `~/backup` directory which are older than two weeks.
+
+### if file link
+
+If given path is a symbolic link.
+
+```bash
+#!/usr/bin/env bash
+
+if [ -h "/path/to/file" ]; then
+    echo "Path \"/path/to/file\" is a symbolic link"
+fi
+```
+
+### if file newer
+
+Check if file1 is newer than file2.
+
+```bash
+#!/usr/bin/env bash
+
+if [ "/path/to/file1" -nt "/path/to/file2" ]; then
+    echo "Path \"/path/to/file1\" is newer than path \"/path/to/file2\""
+fi
+```
+
+### if file older
+
+Check if file1 is older than file2.
+
+```bash
+#!/usr/bin/env bash
+
+if [ "/path/to/file1" -ot "/path/to/file2" ]; then
+    echo "Path \"/path/to/file1\" is older than path \"/path/to/file2\""
+fi
+```
+
+### remove old/new files/directories
+
+Find and remove files(f)/directories(d) older(+)/newer(-) than x days.
+
+```bash
+#!/usr/bin/env bash
+
+find "/path/to/directory/" -type f -mtime +days -delete
+```
+
