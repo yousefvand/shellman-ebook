@@ -607,33 +607,38 @@ readarray -t res < <(formatSeconds 80)
 echo "${res[@]}"
 ```
 
-### fn urlencode / fx urlencode :FIXME
+### fn urlencode / fx urlencode
 
 ```bash
 #!/usr/bin/env bash
 
 # Usage: urlencode url
-# Credit: https://unix.stackexchange.com/a/187256
 function urlencode () {
-    local length="${#1}"
-    for (( i = 0; i < length; i++ )); do
-        local c="${1:i:1}"
-        case "${c}" in
-            [a-zA-Z0-9.~_-]) printf "%s" "${c}" ;;
-            *) printf '%%%02X' "'${c}" ;;
+    local LC_ALL=C
+    local c i n=${#1}
+    for (( i=0; i<n; i++ )); do
+        c="${1:i:1}"
+        case "$c" in
+            [[:alnum:].~_-]) printf '%s' "$c" ;;
+            *) printf '%%%02x' "'$c" ;;
         esac
     done
 }
-
 # Usage: urlencode url
-urlencode "https://example.com/api?query=test&test=test"
-# https%3A%2F%2Fexample.com%2Fapi%3Fquery%3Dtest%26test%3Dtest%         
+urlencode "Hello World!"
+# Hello%20World%21        
 ```
 
-### fn urldecode / fx urldecode :FIXME
+### fn urldecode / fx urldecode
 
 ```bash
+# Usage: urldecode url
+function urldecode() {
+: "${*//+/ }"; echo -e "${_//%/\x}";
+}
 
+urldecode "Hello%20World%21"
+# Hello World!
 ```
 
 ### fn version compare | fn semver compare
