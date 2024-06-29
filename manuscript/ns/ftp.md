@@ -2,14 +2,14 @@
 
 Contains `FTP` related operations.
 
-### ftp list
+### ftp delete file
 
-Get the list of files on the ftp server at specific path.
+Delete specified file from ftp server.
 
 ```bash
 #!/usr/bin/env bash
 
-curl ftp://remisa:1234@mydomain/backup/
+curl ftp://remisa:1234@mydomain/backup/test.zip -Q "DELE test.zip"
 ```
 
 ### ftp download
@@ -22,24 +22,14 @@ Download specified file from ftp server.
 curl ftp://remisa:1234@mydomain/backup/latest.zip
 ```
 
-### ftp upload
+### ftp list
 
-Upload specified file to ftp server at desired path.
-
-```bash
-#!/usr/bin/env bash
-
-curl -T test.zip ftp://remisa:1234@mydomain/backup/
-```
-
-### ftp delete file
-
-Delete specified file from ftp server.
+Get the list of files on the ftp server at specific path.
 
 ```bash
 #!/usr/bin/env bash
 
-curl ftp://remisa:1234@mydomain/backup/test.zip -Q "DELE test.zip"
+curl ftp://remisa:1234@mydomain/backup/
 ```
 
 ### ftp rename
@@ -50,4 +40,14 @@ Rename specified file/directory on ftp server.
 #!/usr/bin/env bash
 
 curl ftp://remisa:1234@mydomain/backup/ -Q "-RNFR backup/test.zip" -Q "-RNTO backup/renamed.zip"
+```
+
+### ftp upload
+
+Upload specified file to ftp server at desired path.
+
+```bash
+#!/usr/bin/env bash
+
+curl -T test.zip ftp://remisa:1234@mydomain/backup/
 ```

@@ -1,8 +1,8 @@
 ## function {#function-snippets}
 
-Contains `function` related operations available through **func** namespace. A function can return a number between 0 to 255 which can be retrieved through `$?` (available as `func ret val` snippet).
+Contains `function` related operations. A function can return a number between 0 to 255 which can be retrieved through `$?` (available as `function return value` snippet).
 
-### func
+### function | func
 
 Define a function to be called later. Function definition must precede its usage.
 
@@ -14,12 +14,13 @@ function myFunction () {
   echo "$2"
 }
 
+# Usage:
 myFunction "some argument" "another argument"
 # some argument
 # another argument
 ```
 
-### func args
+### function arguments | func args
 
 Access to function arguments.
 
@@ -31,10 +32,11 @@ function myFunction () {
 }
 
 myFunction "some argument" "another argument"
+# Usage:
 # some argument another argument
 ```
 
-### func args count
+### function arguments count | func args count
 
 Number of function arguments.
 
@@ -45,13 +47,14 @@ function myFunction () {
   echo $#
 }
 
+# Usage:
 myFunction "some argument" "another argument"
 # 2
 ```
 
-### func ret val
+### function return | func ret val
 
-Check the value last function call has returned (0-255). By convention, zero is returned if no error occurs, otherwise a non-zero value is returned.
+Check the value of last function call has returned (0-255). By convention, zero is returned if no error occurs, otherwise a non-zero value is returned.
 
 ```bash
 #!/usr/bin/env bash
@@ -64,5 +67,5 @@ function test () {
 test "return value"
 echo "$?"
 # return value
-# 25
+# 25 => an error occurred
 ```

@@ -680,5 +680,3 @@ function versionCompare () {
 versionCompare "5.3.1" "5.2.8"
 # >
 ```
-
-### 
