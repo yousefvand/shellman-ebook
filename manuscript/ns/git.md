@@ -114,6 +114,12 @@ git clone -b develop https://github.com/user/repository.git
 cd repository
 ```
 
+### git clone https
+
+```bash
+git clone https://github.com/yousefvand/shellman.git
+```
+
 ### git clone
 
 Clone a repository to local machine.
@@ -123,12 +129,6 @@ Clone a repository to local machine.
 
 git clone git@github.com:yousefvand/shellman.git
 cd repository
-```
-
-### git clone https
-
-```bash
-git clone https://github.com/yousefvand/shellman.git
 ```
 
 ### git commit list notPushed
@@ -165,6 +165,8 @@ git reset --soft HEAD~1 # undo last local change but don't delete them
 
 ```bash
 git commit -m "fixes #12, #13, #15"
+# or
+git commit -m "fixed typo"
 ```
 
 ### git config list
@@ -177,15 +179,15 @@ List a brief configuration of local git configuration..
 git config --list
 ```
 
-### git commit
+### git patch apply
 
-Commit changes.
+Apply a patch from file.
 
 ```bash
 #!/usr/bin/env bash
 
-git commit -m "fixed typo"
-```
+git apply < patch1.patch
+``` 
 
 ### git patch create
 
@@ -195,16 +197,6 @@ Create a patch from changes.
 #!/usr/bin/env bash
 
 git diff > patch1.patch
-```
-
-### git patch apply
-
-Apply a patch from file.
-
-```bash
-#!/usr/bin/env bash
-
-git apply < patch1.patch
 ```
 
 ### git remote list
@@ -217,34 +209,36 @@ List all remotes.
 git remote
 ```
 
-### git remote urlAdd
+### git remote urlAdd https | git remote url add https
 
-Add remote url.
+Add remote url using HTTPS.
 
 ```bash
-#!/usr/bin/env bash
-
-git remote add origin https://github.com/user/repository.git
+git remote add origin https://github.com/yousefvand/shellman.git
 ```
 
-### git remote urlChange
+### git remote urlAdd | git remote url add | git remote urlAdd ssh | git remote url add ssh
 
-Change remote url.
+Add remote url using SSH.
 
 ```bash
-#!/usr/bin/env bash
-
-git remote set-url origin https://github.com/user/repository.git
+git remote set-url origin git@github.com:yousefvand/shellman.git
 ```
 
-### git tag list
+### git remote urlChange https | git remote url change https
 
-List all tags.
+Change remote url using HTTPS.
 
 ```bash
-#!/usr/bin/env bash
+git remote set-url origin git@github.com:yousefvand/shellman.git
+```
 
-git tag
+### git remote urlChange | git remote url change | git remote urlChange ssh | git remote url change ssh
+
+Change remote url using SSH.
+
+```bash
+git remote set-url origin git@github.com:yousefvand/shellman.git
 ```
 
 ### git tag commit
@@ -255,6 +249,16 @@ Tag a commit.
 #!/usr/bin/env bash
 
 git tag -a release/1.0.0 -m "1.0.0 release"
+```
+
+### git tag list
+
+List all tags.
+
+```bash
+#!/usr/bin/env bash
+
+git tag
 ```
 
 ### git tag remote delete

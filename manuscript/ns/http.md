@@ -2,75 +2,6 @@
 
 Contains `HTTP` related operations.
 
-### http GET
-
-Send a *GET* request to specified *URL*.
-
-```bash
-#!/usr/bin/env bash
-
-curl --request GET -sL \
-  --user-agent 'Shellman' \
-  --url 'http://example.com'
-```
-
-Above example sends a *HTTP GET* request to <http://example.com> with desire [User Agent](https://en.wikipedia.org/wiki/User_agent).
-
-### http DELETE
-
-Send a *DELETE* request to specified *URL*.
-
-```bash
-#!/usr/bin/env bash
-
-curl --request DELETE -sL \
-  --user-agent 'Shellman' \
-  --url 'http://example.com'
-```
-
-### http POST
-
-Send a *POST* request to specified *URL*.
-
-```bash
-#!/usr/bin/env bash
-
-curl --request POST -sL \
-  --user-agent 'Shellman' \
-  --url 'http://example.com' \
-  --data 'key1=value1' \
-  --data 'key2=value2'
-```
-
-### http POST file
-
-Send file with *http POST*.
-
-```bash
-#!/usr/bin/env bash
-
-curl --request POST -sL \
-  --user-agent 'Shellman' \
-  --url 'http://example.com' \
-  --form 'key=value' \
-  --form 'file=@~/image.jpg'
-```
-
-Above example sends `image.jpg` to <http://example.com> via *POST* method.
-
-### http header
-
-Send http request with custom header(s).
-
-```bash
-#!/usr/bin/env bash
-
-curl --request GET -sL \
-  --user-agent 'Shellman' \
-  --header 'key: value' \
-  --url 'http://example.com'
-```
-
 ### http cookie
 
 Send http request with desired cookies.
@@ -96,3 +27,86 @@ curl --request GET -sL \
   --output '~/downloaded-file.zip' \
   --url 'http://example.com/file.zip'
 ```
+
+### http GET
+
+Send a *GET* request to specified *URL*.
+
+```bash
+#!/usr/bin/env bash
+
+curl --request GET -sL \
+  --user-agent 'Shellman' \
+  --url 'http://example.com'
+```
+Above example sends a *HTTP GET* request to <http://example.com> with desire [User Agent](https://en. wikipedia.org/wiki/User_agent).   
+
+### http header
+
+Send http request with custom header(s).
+
+```bash
+#!/usr/bin/env bash
+
+curl --request GET -sL \
+  --user-agent 'Shellman' \
+  --header 'key: value' \
+  --url 'http://example.com'
+```
+
+### http POST file
+
+Send file with *http POST*.
+
+```bash
+#!/usr/bin/env bash
+
+curl --request POST -sL \
+  --user-agent 'Shellman' \
+  --url 'http://example.com' \
+  --form 'key=value' \
+  --form 'file=@~/image.jpg'
+```
+
+Above example sends `image.jpg` to <http://example.com> via *POST* method.
+
+### http POST
+
+Send a *POST* request to specified *URL*.
+
+```bash
+#!/usr/bin/env bash
+
+curl --request POST -sL \
+  --user-agent 'Shellman' \
+  --url 'http://example.com' \
+  --data 'key1=value1' \
+  --data 'key2=value2'
+```
+
+
+
+
+
+
+
+
+ 
+
+### http DELETE
+
+Send a *DELETE* request to specified *URL*.
+
+```bash
+#!/usr/bin/env bash
+
+curl --request DELETE -sL \
+  --user-agent 'Shellman' \
+  --url 'http://example.com'
+```
+
+
+
+
+
+
