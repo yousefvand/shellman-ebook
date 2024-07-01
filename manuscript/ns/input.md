@@ -18,5 +18,3 @@ Get simple text from user and put in a variable.
 read -rep "what are you reading? " -i "Shellman ebook" answer
 echo "${answer}"
 ```
-
-### 
