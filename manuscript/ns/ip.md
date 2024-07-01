@@ -9,7 +9,7 @@ Array of local IPs.
 ```bash
 #!/usr/bin/env bash
 
-IPS=`hostname -I`
+IPS=$(hostname)
 echo "$IPS"
 ```
 
@@ -20,7 +20,7 @@ public ip information (ip, city, region, country, location, postal code, organiz
 ```bash
 #!/usr/bin/env bash
 
-echo `curl -s ipinfo.io/country`
+"$(curl -s ipinfo.io/country)"
 # U.K
 ```
 
@@ -39,6 +39,6 @@ Find public ip address via different services.
 ```bash
 #!/usr/bin/env bash
 
-PUBLIC_IP=`curl -s api.ipify.org`
+PUBLIC_IP="(curl -s api.ipify.org)"
 echo "$PUBLIC_IP"
 ```

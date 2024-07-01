@@ -34,7 +34,7 @@ done
 # start
 ```
 
-Also `loop infinite` snippet is available:
+### infinite loop
 
 ```bash
 #!/usr/bin/env bash
@@ -197,3 +197,66 @@ latest
 glibc
 latest
 ```
+
+### if
+
+This snippet is a full if/else if/else.
+
+```bash
+if [ condition ]; then
+     # if body
+elif [ condition ]; then
+     # else if body
+else
+     # else body
+fi
+```
+
+### if
+
+This is a simple if.
+
+
+```bash
+if condition; then
+    command ...
+fi
+```
+
+### iff
+
+Short circuit AND.
+
+```bash
+[ condition ] && command
+```
+
+if condition is true then command executed otherwise command doesn't executed.
+
+### iff not
+
+Short circuit OR.
+
+```bash
+[ condition ] || command
+```
+
+if condition is true or false then command executed.
+
+
+### switch case
+
+```bash
+case "${item}" in
+    1)
+        echo "item = 1"
+    ;;
+    2|3)
+        echo "item = 2 or item = 3"
+    ;;
+    *)
+        echo "default (none of above)"
+    ;;
+esac
+```
+
