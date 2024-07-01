@@ -2,30 +2,85 @@
 
 Contains `other` operations not available in namespaces.
 
-### switch case
-
-This is the `switch / case` you may be familiar in other languages. You can define different actions based on `switch`:
+### am I not root | am I not sudo
 
 ```bash
-#!/usr/bin/env bash
-
-var=2
-
-case "$var" in
-  1)
-    echo "case 1"
-  ;;
-  2|3)
-    echo "case 2 or 3"
-  ;;
-  *)
-    echo "default action"
-  ;;
-esac
-# case 2 or 3
+if (( $(id -u) != 0 )); then
+    echo "I'm not root"
+fi
 ```
 
-In above example we are deciding on the value of `var` which here is 2. If `var` is 2 or 3 the second case will be triggered. If none of cases (1, 2 or 3) are triggered, `*` means default and that will be triggered. change `var` to 5 and output will be `default action`.
+### am I root | am I sudo
+
+```bash
+if (( $(id -u) == 0 )); then
+    echo "I'm root"
+fi
+```
+
+### animation frame
+
+```bash
+# Your frames need to have the exact same width and height.
+# If they are different in size, fill unused space with `space`s (no `TAB`s).
+IFS='' read -r -d '' "frames[1]" <<"EOF"
+# Frame here
+EOF
+```
+
+### argument parsing
+
+```bash
+POSITIONAL=()
+while (( $# > 0 )); do
+    case "${1}" in
+        -f|--flag)
+        echo flag: "${1}"
+        shift # shift once since flags have no values
+        ;;
+        -s|--switch)
+        numOfArgs=1 # number of switch arguments
+        if (( $# < numOfArgs + 1 )); then
+            shift $#
+        else
+            echo "switch: ${1} with value: ${2}"
+            shift $((numOfArgs + 1)) # shift 'numOfArgs + 1' to bypass switch and its value
+        fi
+        ;;
+        *) # unknown flag/switch
+        POSITIONAL+=("${1}")
+        shift
+        ;;
+    esac
+done
+
+set -- "${POSITIONAL[@]}" # restore positional params
+```
+
+### echo text | print text
+
+```bash
+echo 'text here'
+```
+
+### echo variable | print variable
+
+```bash
+echo "${variable}"
+```
+
+### exit code
+
+```bash
+exit 0
+```
+
+### os is
+
+```bash
+OS=$(awk -F'=' '/^ID=/ { gsub("\"","",$2); print tolower($2) }' /etc/*-release 2> /dev/null)
+echo "$OS" #arch
+```
 
 ### region {#region}
 
@@ -60,6 +115,38 @@ Creates a commented summary for shell script. Use it at the top of your script.
 ```
 
 Document your script error codes under `Exit codes` section. These are code you have used in script when it exits due to an error (i.e. `exit 5` for lack of permission to do the job).
+
+### shebang | bash | first line
+
+```bash
+#!/usr/bin/env bash
+```
+
+### sleep
+
+Halt script for desired period in seconds `s`, minutes `m`, hours `h`, days `d`.
+
+```bash
+#!/usr/bin/env bash
+
+sleep 2m
+# halts script for 2 minutes
+```
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### let
 
@@ -114,17 +201,6 @@ result=$((2 * 3))
 echo "$result" # 6
 ```
 
-### ask question
-
-Ask a question from user and receive its answer from input. It is possible to provide a default answer to the question.
-
-```bash
-#!/usr/bin/env bash
-
-read -ep "What is your name? " -i Remisa ANSWER
-echo "$ANSWER" # print user's answer
-```
-
 ### timeout
 
 Run a command within a time frame.
@@ -144,17 +220,6 @@ Commands related to *services*. A *service* is a program which runs in backgroun
 #!/usr/bin/env bash
 
 sudo systemctl restart service
-```
-
-### sleep
-
-Halt script for desired period in seconds `s`, minutes `m`, hours `h`, days `d`.
-
-```bash
-#!/usr/bin/env bash
-
-sleep 2m
-# halts script for 2 minutes
 ```
 
 ### stopwatch
