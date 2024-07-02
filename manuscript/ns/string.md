@@ -42,7 +42,7 @@ string1='This is a string!'
 string2='This is a string!'
 
 if [ "$string1" = "$string2" ]; then
-  echo 'Strings are equal'
+  echo "Strings are equal"
 fi
 ```
 
@@ -62,14 +62,20 @@ fi
 
 ### string indexOf
 
-Returns index of substring inside a string.
+Returns the first index of a substring inside a string.
 
 ```bash
 #!/usr/bin/env bash
 
-myString="Hello World!"
-temp=${myString%%"or"*} && indexOf=`echo ${myString%%"or"*} | echo ${#temp}`
-echo $indexOf # 7
+string="hello world"
+substring="world"
+prefix=${string%%"$substring"*}
+index=${#prefix}
+if [[ index -eq ${#string} ]]; then
+    echo -1
+else
+    echo "$index" # 6
+fi
 ```
 
 ### if string empty
@@ -81,9 +87,9 @@ Check if variable is an empty string.
 
 var=""
 if [ -z "$var" ]; then
-  echo "Variable is empty string."
+  echo "Variable is an empty string."
 fi
-# Variable is empty string.
+# Variable is an empty string.
 ```
 
 ### if string not empty
@@ -102,14 +108,14 @@ fi
 
 ### string length
 
-Returns _length_ of given string.
+Returns _length_ of a given string.
 
 ```bash
 #!/usr/bin/env bash
 
 var="abcdefg"
 length=${#var}
-echo "$length"
+echo "$length" # 7
 ```
 
 ### string random
@@ -117,22 +123,40 @@ echo "$length"
 Generates a random string from specified characters with desired length.
 
 ```bash
-randomString=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 16 ; echo '')
-echo "$randomString"
+    randomString=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 16 ; echo '')
+    echo "$randomString"
 ```
 
 In above example random string is built up from characters `A-Z`, `a-z` and `0-9` and length of it would be 16 characters.
 
-### string replace
+### string replace once
 
-Replace a substring with given string in another string.
+Replace the first substring with given string in another string.
 
 ```bash
 #!/usr/bin/env bash
 
-str1="Hello World!"
-replaced=`echo -e "${str1}" | sed -e 's/World/Everyone/g'`
-echo "$replaced" # Hello Everyone!
+new="Everyone"
+old="world"
+string="Hello world"
+
+result="${string/$old/$new}"
+echo "$result" # Hello Everyone
+```
+
+### string replace all
+
+Replace all the substrings with given string in another string.
+
+```bash
+#!/usr/bin/env bash
+
+new="Everyone"
+old="world"
+string="Hello world, bye world"
+
+result="${string//$old/$new}"
+echo "$result" # Hello Everyone, bye Everyone
 ```
 
 ### string reverse
@@ -154,8 +178,11 @@ Returns a substring from given string starting at _index_ and with the length of
 ```bash
 #!/usr/bin/env bash
 
-str1="abcdefg"
-substring=`echo -e "${str1:2:3}"`
+string="abcdefg"
+offset=2
+length=3
+
+substring=$(echo -e "${string:${offset}:${length}}")
 echo "$substring" # cde
 ```
 
@@ -168,8 +195,10 @@ Finds the frequency of a substring in a string (may need character escaping).
 ```bash
 #!/usr/bin/env bash
 
-frequency=`sed -E 's/(.)/\1\n/g' <<<"a!bc!def!" | grep -c "!"`
-echo "${frequency}" # 3
+string="abcdefgcd"
+substring="c"
+tmp="${string//$substring}" && frequency=$(((${#string} - ${#tmp}) / ${#substring}))
+echo "${frequency}" # 2
 ```
 
 ### string toLower
