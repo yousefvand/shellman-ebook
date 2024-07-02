@@ -2,13 +2,20 @@
 
 # Usage: banner_simple "my title"
 
-function banner_simple() {
-  local msg="* $* *"
-  local edge=`echo "$msg" | sed 's/./*/g'`
-  echo "$edge"
-  echo "`tput bold`$msg`tput sgr0`"
-  echo "$edge"
-  echo
+# Usage: bannerSimple "my title" "*"
+function bannerSimple() {
+    local msg="${2} ${1} ${2}"
+    local edge
+    edge=${msg//?/$2}
+    echo "${edge}"
+    echo "$(tput bold)${msg}$(tput sgr0)"
+    echo "${edge}"
+    echo
 }
 
-banner_simple "my title"
+# Usage: bannerSimple "my title" "*"
+bannerSimple "my title" "*"
+
+************
+* my title *
+************

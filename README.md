@@ -12,4 +12,3 @@ The free and non-free versions are identical, so just buy the book if you want t
 
 - [epub](https://github.com/yousefvand/shellman-ebook/releases/download/v2.2.0/shellman-2021-02-19.epub.zip)
 
-- [mobi](https://github.com/yousefvand/shellman-ebook/releases/download/v2.2.0/shellman-2021-02-19.mobi.zip)

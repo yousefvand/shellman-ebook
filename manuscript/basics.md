@@ -155,7 +155,7 @@ echo "${fullName}"
 Consider you want to delete a file named `some file.txt` and you have save its name in a variable like:
 
 ```bash
-fileName="some file.txt"
+fileName=some file.txt
 rm ${fileName}
 ```
 
@@ -276,8 +276,8 @@ function myfunc () {
   echo "this is the result"
 }
 
-result=`myfunc`
-echo "$result"
+result=$(myfunc)
+echo "${result}"
 ```
 
 For more function related operations see [function](#function-snippets) snippets.
@@ -289,7 +289,7 @@ For more function related operations see [function](#function-snippets) snippets
 It is common practice to store the output of commands inside variables for further processing in script. The process is known as *command substitution* and can be done in two syntaxes:
 
 1. `` output=`command` ``
-2. `output=$(command)`
+2. `output=$(command)` # This method is encouraged
 
 To store results of `ls` command in a variable named `output`:
 
@@ -371,7 +371,7 @@ It is a good practice to inform script caller (in case other scripts use yours) 
 exit 0
 ```
 
-And if an error happens use an exit code. Document exit codes at the top of of your script:
+And if an error happens use an exit code. Document exit codes at the top of your script:
 
 ```bash
 exit 5 # documented as "no internet connection"
@@ -593,4 +593,4 @@ Apart from some examples in this book there is a [samples directory](https://git
 
 [^home-directory]: `~` is a shorthand for current user, *home directory*, which usually is `/home/username`. This path is also accessible via `$HOME` global variable.
 
-To read global variables simply write: `echo $GLOBAL_VARIABLE`. One of the most famous global variables is **PATH**. It consist of many paths separated by semicolon (`;`). When you run a command operating system searches these paths to find your command. If your command is not in those paths you need to enter the full path of your command.
+To read global variables simply write: `echo $GLOBAL_VARIABLE`. One of the most famous global variables is **$PATH**. It consist of many paths separated by semicolon (`;`). When you run a command operating system searches these paths to find your command. If your command is not in those paths you need to enter the full path of your command.

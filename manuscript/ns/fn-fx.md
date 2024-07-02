@@ -1,4 +1,6 @@
-## Sometimes you can do great things just if you have the right function. By having the right function you just need to call it. Sometimes calling the function needs to parametrize it which is very easy in compare to wring the whole function. Shellman have a namespace calling fn/fx which means by fn blah you insert a function in your code and bu fx blah you call your function. You can do amazing things like making animations by fn/fx.
+{#fn-fx}
+
+### Sometimes you can do great things just if you have the right function. By having the right function you just need to call it. Sometimes calling the function needs to parametrize it which is very easy in compare to wring the whole function. Shellman have a namespace calling fn/fx which means by fn blah you insert a function in your code and bu fx blah you call your function. You can do amazing things like making animations by fn/fx.
 
 ### [animation frame | fn animation animate | fx animation animate]{#animation}
 
