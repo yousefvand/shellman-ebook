@@ -2,6 +2,18 @@
 
 Contains `Time` related operations.
 
+### time seconds epoch
+
+Seconds from 01-01-1970 00:00.
+
+```bash
+#!/usr/bin/env bash
+
+timeNowSecondsEpoch=$(date +%s)
+echo "${timeNowSecondsEpoch}"
+#1719942046 
+```
+
 ### time now local
 
 Current local time.
@@ -23,17 +35,7 @@ Current UTC time.
 ```bash
 #!/usr/bin/env bash
 
-timeNowUTC=`date -u +%R`
-echo "$timeNowUTC" # 12:56
-```
-
-### time seconds epoch
-
-Seconds from 01-01-1970 00:00.
-
-```bash
-#!/usr/bin/env bash
-
-timeNowSecondsEpoch=`date +%s`
-echo "$timeNowSecondsEpoch" # 1545223678
+timeNowUTC=$(date -u +%R)
+echo "${timeNowUTC}"
+# 17:45
 ```
