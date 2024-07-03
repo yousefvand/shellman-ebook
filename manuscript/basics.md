@@ -485,6 +485,8 @@ X> Write a shell script to greet. Script receives the name via `--name` or `-n` 
 # good morning Remisa
 ```
 
+For the answer refer to [Solutions](#solutions) section, [greet](#greet).
+
 As you have noticed, first argument can be accessed via `${1}`, second argument via `${2}`...
 
 And yes, `${0}` refers to script name itself at the time of execution.

@@ -132,21 +132,6 @@ Halt script for desired period in seconds `s`, minutes `m`, hours `h`, days `d`.
 sleep 2m
 # halts script for 2 minutes
 ```
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ### let
 

@@ -137,7 +137,7 @@ function pacMan () {
 pacMan "Hello World" 0.1 "."
 ```
 
-### fn banner simple fx banner simple
+### fn banner simple / fx banner simple
 
 Create a simple banner around your text.
 
@@ -410,7 +410,7 @@ multiChoice "Select options:" result "One 1;Two 2;Three 3" "1;0;1"
 echo "${result[@]}"
 ```
 
-### fn math average fx math average
+### fn math average / fx math average
 
 ```bash
 #!/usr/bin/env bash

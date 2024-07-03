@@ -25,6 +25,7 @@ sudo kill -9 `pgrep firefox`
 ```
 
 In above example we find *firefox* `PID` and pass it to `kill` command. Here `-9` is a switch of `kill` command (kill signal). You can see a list of all signals by typing `kill -l` in terminal.
+The easier solution is `killall firefox` or `pkill firefox`.
 
 
 ### process list

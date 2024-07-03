@@ -24,6 +24,12 @@ Output:
 
 ![colorful text](images/colorful-text.png)
 
+## Greet {#greet}
+
+Contents of `greet.sh`:
+
+<<[Greet](code/greet.sh)
+
 ## Factorial {#factorial}
 
 Contents of `factorial.sh`:

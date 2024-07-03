@@ -65,7 +65,7 @@ echo $((2 ** 4)) # 16
 echo $((3 ** 3)) # 27
 ```
 
-### math √ (square root)
+### math square root
 
 Returns square root of given number up to given *precision*.
 
