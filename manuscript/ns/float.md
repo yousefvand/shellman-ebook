@@ -1,4 +1,6 @@
-## Mathematical operations on integers and non-integers in bash is different. But don't worry Shellman handles both. In this section we do non-integer math operations. It is suffice to add `float` or `double` in your snippet.
+## Mathematical operations 
+
+Mathematical operations on integers and non-integers in bash is different. But don't worry Shellman handles both. In this section we do non-integer math operations. It is suffice to add `float` or `double` in your snippet.
 
 ### if float = | if double =
 

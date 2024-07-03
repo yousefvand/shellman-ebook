@@ -1,8 +1,8 @@
-{#fn-fx}
+### Ready functions
 
-### Sometimes you can do great things just if you have the right function. By having the right function you just need to call it. Sometimes calling the function needs to parametrize it which is very easy in compare to wring the whole function. Shellman have a namespace calling fn/fx which means by fn blah you insert a function in your code and bu fx blah you call your function. You can do amazing things like making animations by fn/fx.
+Sometimes you can do great things just if you have the right function. By having the right function you just need to call it. Sometimes calling the function needs to parametrize it which is very easy in compare to wring the whole function. Shellman have a namespace calling fn/fx which means by fn blah you insert a function in your code and bu fx blah you call your function. You can do amazing things like making animations by fn/fx.
 
-### [animation frame | fn animation animate | fx animation animate]{#animation}
+### [animation frame | fn animation animate | fx animation animate]{#animation-fn-fx}
 
 besides `fn animation` and `fx animation animate` we need to borrow `animation frame` from `misc` namespace. The latter is responsible to hold your frames. Be careful your frames should be exact size. It means if a line is shorter than the longest line you should fill it by space. Then `fn animate` is responsible to animate fames as `fx animation animate` tells it. There are multiple example on website but I give a small taste here:
 
@@ -298,7 +298,6 @@ User can have multiple choices.
 #!/usr/bin/env bash
 
 # Usage: multiChoice "header message" resultArray "comma separated options" "comma separated default values"
-# Credit: https://serverfault.com/a/949806
 function multiChoice {
     echo "${1}"; shift
     echo "$(tput dim)""- Change Option: [up/down], Change Selection: [space], Done: [ENTER]" "$(tput sgr0)"
@@ -588,7 +587,6 @@ echo "${openPorts[@]}"
 #!/usr/bin/env bash
 
 # Usage: formatSeconds 70 -> 1m 10s
-# Credit: https://unix.stackexchange.com/a/27014
 function formatSeconds {
     local T=$1
     local D=$((T/60/60/24))

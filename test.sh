@@ -1,12 +1,2 @@
 #!/usr/bin/env bash
 
-        
-
-
-
-
-
-
-
-
-

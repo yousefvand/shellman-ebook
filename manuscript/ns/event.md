@@ -21,7 +21,7 @@ trap on_exit EXIT
 
 The `trap on_exit EXIT` part registers `on_exit` function to `EXIT` event. You need to register events as soon as possible in your script. But since it needs `on_exit` function, you need to define that function before registering the event.
 
-The `tput cnorm` part ensures we have a visible cursor when script exits. If you are using [animation](#animation-snippets) feature of `Shellman` don't remove it. Anyway it is harmless and you can leave it there even if no animation is used.
+The `tput cnorm` part ensures we have a visible cursor when script exits. If you are using [animation](#animation-fn-fx) feature of `Shellman` don't remove it. Anyway it is harmless and you can leave it there even if no animation is used.
 
 ### event CTRL+C | event terminated
 

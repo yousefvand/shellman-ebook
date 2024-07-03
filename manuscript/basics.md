@@ -110,10 +110,10 @@ T> Spaces are not allowed over equal sign `=` in variable assignment.
 Now if we want to read our variable value and print in on screen with `echo` command we can write:
 
 ```bash
-firstName=Remisa
-echo $firstName
+firstName="Remisa"
+echo "$firstName"
 # or
-echo ${firstName} # This syntax is encouraged
+echo "${firstName}" # This syntax is encouraged
 ```
 
 T> ### Variable Access Rule
@@ -484,8 +484,6 @@ X> Write a shell script to greet. Script receives the name via `--name` or `-n` 
 ./greet.sh -m -n Remisa
 # good morning Remisa
 ```
-
-For the answer check [solutions](#argument-parsing) section.
 
 As you have noticed, first argument can be accessed via `${1}`, second argument via `${2}`...
 
