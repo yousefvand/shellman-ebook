@@ -8,7 +8,7 @@ The free and non-free versions are identical, so just buy the book if you want t
 
 ## Download ebook
 
-- [pdf](https://github.com/user-attachments/files/16102201/shellman-first-edition-pdf.zip   )
+- [pdf](https://github.com/yousefvand/shellman-ebook/releases/download/v1.0.0/shellman.pdf)
 
-- [epub](https://github.com/user-attachments/files/16102197/shellman-first-edition-epub.zip)
+- [epub](https://github.com/yousefvand/shellman-ebook/releases/download/v1.0.0/shellman.epub)
 
